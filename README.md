@@ -1,6 +1,20 @@
 # macOSの環境構築
 
 ## アプリのインストール
+
+- Visual Studio Code
+- Rectangle
+- Clipy
+- Karabiner-Element
+- Just Forcus（ポモドーロテクニックアプリ）
+- iterm
+- Itsycal(メニューバーカレンダーアプリ)
+- Google IEM
+- Wally(Ergodoxの設定アプリ)
+
+## Macのシステム環境設定
+## Karabinerの設定
+## itermの設定
 ## workディレクトリの作成
 ## zshの設定
 ## Gitの設定
