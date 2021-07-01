@@ -293,15 +293,16 @@ endif
 
 こちらを見ながらやる
 
-
 https://brew.sh/index_ja
 
+## nodebrew/Node.js/yarnの設定
 
-## anyenv
-### pyenv/Pythonの設定
-### nodebrew/Node.js/yarnの設定
-## GCPの設定
+こちらを見ながらやる
+
+https://github.com/hokaccha/nodebrew
+
 ## AWSの設定
+## GCPの設定
 ## PostgreSQLの設定
 ## asdf/Erlang/Elixir/Phoenixの設定
 ## ghc/Haskellの設定
