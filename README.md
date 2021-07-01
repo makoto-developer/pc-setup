@@ -60,6 +60,8 @@ alias fr="firebase"
 alias nv='nvim'
 alias vi='vim'
 alias v="vim"
+alias nb="nodebrew"
+alias nodeb="nodebrew"
 
 ## ls系
 alias ll="ls -la"
