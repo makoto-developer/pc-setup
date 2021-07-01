@@ -289,6 +289,14 @@ if has("autocmd")
 endif
 ```
 
+## brew
+
+こちらを見ながらやる
+
+
+https://brew.sh/index_ja
+
+
 ## anyenv
 ### pyenv/Pythonの設定
 ### nodebrew/Node.js/yarnの設定
