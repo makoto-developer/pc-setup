@@ -301,6 +301,13 @@ https://brew.sh/index_ja
 
 https://github.com/hokaccha/nodebrew
 
+
+```
+vim .zsh_profile
+
+# 追加
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+```
 ## AWSの設定
 ## GCPの設定
 ## PostgreSQLの設定
