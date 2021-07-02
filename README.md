@@ -125,6 +125,10 @@ vim .gitconfig
 
 ```
 
+### グローバルなgitignore
+
+https://qiita.com/takuya0301/items/29187aa088d04cf92659
+
 ## SSHの設定
 
 ```zsh
@@ -310,6 +314,22 @@ vim .zsh_profile
 # 追加
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 ```
+## VScode
+
+
+.vscode/settings.json
+
+```json
+{
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#4aa1c4",
+        "titleBar.activeForeground": "#000000",
+        "activityBar.background": "#4aa1c4",
+        "activityBar.foreground": "#000000"
+    }
+}
+```
+
 ## AWSの設定
 ## GCPの設定
 ## PostgreSQLの設定
