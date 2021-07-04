@@ -328,6 +328,7 @@ https://brew.sh/index_ja
 
 https://github.com/hokaccha/nodebrew
 
+```
 
 ```zsh
 vim .zsh_profile
@@ -335,6 +336,7 @@ vim .zsh_profile
 # 追加
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 ```
+
 ## VScode
 
 
@@ -367,6 +369,90 @@ vim
 YAML
 Go
 
+## Elixir/Phoenix
+
+asdfでElixir環境を構築
+
+こちらを参照
+
+https://asdf-vm.com/#/core-manage-asdf
+
+macOS -> Homebrew 経由でインストール
+
+```
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
+```
+
+macOS -> ZSH -> Git
+
+```
+. $HOME/.asdf/asdf.sh
+```
+
+プラグインを
+プラグインを入れる
+
+```zsh
+asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+```
+
+### Erlangインストール
+
+最新のErlangを確認
+
+```zsh
+asdf list-all erlang
+```
+
+最新のErlangを入れる
+
+```zsh
+asdf install erlang 24.0.3
+```
+
+インストール済みのErlangのバージョンを確認
+
+```zsh
+asdf list erlang
+```
+
+Erlangを使えるようにする
+
+```zsh
+asdf global erlang 24.0.3
+```
+
+### Elixirをインストール
+
+Erlangと同じく、インストール可能なElixirバージョンを確認
+
+```
+asdf list-all elixir
+```
+最新のElixirを入れる
+
+```zsh
+asdf install elixir 1.12.2-otp-24
+```
+
+インストール済みのElixirのバージョンを確認
+
+```zsh
+asdf list elixir
+```
+
+Elixirを使えるようにする
+
+```zsh
+asdf global elixir 1.12.2-otp-24
+```
+
+### Phoenix
+
+```zsh
+mix archive.install hex phx_new
+```
 
 ## AWSの設定
 ## GCPの設定
