@@ -36,16 +36,15 @@ touch .zsh_profile
 ```
 
 ```zsh
-echo "source .zsh_profile" >> .zshrc
-```
-
-```zsh
-echo "source .zsh_profile" >> .zshrc
+echo "source ~/.zsh_profile" >> .zshrc
 ```
 
 .zsh_profileに以下の内容を貼り付ける
 
 ```zsh
+## 環境変数
+
+
 ## ショートカット
 alias _="sudo"
 alias mk="mkdir"
@@ -70,18 +69,23 @@ alias l="ls -l"
 ## git系
 alias g="git"
 
-# 移動
+## 移動
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
+
+
+## カスタムコマンド
+
+
 ```
 
 ## Gitの設定
 
 ```zsh
-vim .gitconfig
+vim ~/.gitconfig
 ```
 
 ```zsh
@@ -130,6 +134,8 @@ vim .gitconfig
 https://qiita.com/takuya0301/items/29187aa088d04cf92659
 
 ## SSHの設定
+
+参考
 
 ```zsh
 ssh-keygen -t rsa -b 4096 -C "72484465+makoto-engineer@users.noreply.github.com"
