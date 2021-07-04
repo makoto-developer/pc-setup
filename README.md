@@ -453,6 +453,21 @@ asdf global elixir 1.12.2-otp-24
 ```zsh
 mix archive.install hex phx_new
 ```
+## NeoVIM
+
+neovimの公式ページからダウンロードして実行する
+
+https://github.com/neovim/neovim
+
+いったん、すべてのアプリを権限を無視して実行できるようにする
+
+```zsh
+sudo spctl --master-disable
+```
+
+```zsh
+sudo ./nvim-osx64/bin/nvim
+```
 
 ## AWSの設定
 ## GCPの設定
