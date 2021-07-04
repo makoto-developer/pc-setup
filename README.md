@@ -364,6 +364,9 @@ npm
 yarn
 Draw.io Integration
 vim
+YAML
+Go
+
 
 ## AWSの設定
 ## GCPの設定
