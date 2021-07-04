@@ -351,6 +351,20 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 }
 ```
 
+### VSCode 拡張機能
+
+ElixirLS: Elixir support and debugger
+Bracket Pair Colorizer
+Rainbow CSV
+indent-rainbow
+Path Intellisense
+HTML CSS Support
+IntelliSense for CSS class names in HTML
+npm
+yarn
+Draw.io Integration
+vim
+
 ## AWSの設定
 ## GCPの設定
 ## PostgreSQLの設定
