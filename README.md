@@ -88,10 +88,12 @@ alias ..3='cd ../../..'
 vim ~/.gitconfig
 ```
 
+メールは現在はこれ: 72484465+makoto-engineer@users.noreply.github.com
+
 ```zsh
 [user]
 	name = makoto
-	email = email@example.com
+	email = 72484465+makoto-engineer@users.noreply.github.com
 [push]
 	default = current
 [core]
@@ -131,7 +133,20 @@ vim ~/.gitconfig
 
 ### グローバルなgitignore
 
+vim ~/.gitignore_global
+
+```zsh
+.DS_Store
+```
+
+```zsh
+$ git config --global core.excludesFile ~/.gitignore_global
+```
+
+参考
+
 https://qiita.com/takuya0301/items/29187aa088d04cf92659
+
 
 ## SSHの設定
 
@@ -314,7 +329,7 @@ https://brew.sh/index_ja
 https://github.com/hokaccha/nodebrew
 
 
-```
+```zsh
 vim .zsh_profile
 
 # 追加
