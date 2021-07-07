@@ -472,7 +472,6 @@ sudo ./nvim-osx64/bin/nvim
 ## AWSの設定
 ## GCPの設定
 ## PostgreSQLの設定
-## asdf/Erlang/Elixir/Phoenixの設定
 ## ghc/Haskellの設定
 ## elmの設定
 ## Dockerインストール
