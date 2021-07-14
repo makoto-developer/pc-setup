@@ -469,6 +469,19 @@ sudo spctl --master-disable
 sudo ./nvim-osx64/bin/nvim
 ```
 
+## キーリピート設定変更
+
+```
+defaults write -g InitialKeyRepeat -int 13
+defaults write -g KeyRepeat -int 1
+```
+
+緊急時もとに戻す
+```
+defaults delete -g InitialKeyRepeat
+defaults delete -g KeyRepeat
+```
+
 ## AWSの設定
 ## GCPの設定
 ## PostgreSQLの設定
