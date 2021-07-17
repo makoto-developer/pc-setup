@@ -459,14 +459,18 @@ neovimの公式ページからダウンロードして実行する
 
 https://github.com/neovim/neovim
 
-いったん、すべてのアプリを権限を無視して実行できるようにする
-
 ```zsh
-sudo spctl --master-disable
+brew install neovim
+```
+
+エラーが起きたら
+
+```
+E886: System error while opening ShaDa /xxxxx/xxxxxxxxx/xxxxxxx/nvim/shada/main.shada for reading: permission denied
 ```
 
 ```zsh
-sudo ./nvim-osx64/bin/nvim
+sudo chown -R ユーザ名.local/share/nvim
 ```
 
 ## キーリピート設定変更
