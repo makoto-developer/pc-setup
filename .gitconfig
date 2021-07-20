@@ -1,0 +1,41 @@
+[user]
+	name = makoto
+	email = 72484465+makoto-engineer@users.noreply.github.com
+[push]
+	default = current
+[core]
+	autocrlf = false
+	quotepath = false
+	excludesFile = /Users/iguchi_takashi/.gitignore_global
+[alias]
+	a = add
+	ad = add
+	s = status
+	st = status
+	ss = stash
+	ft = fetch
+	df = diff
+	dfw = diff --word-diff
+	dfn = diff --name-only
+	cm = commit
+	b = branch
+	br = branch
+	ps = push
+	pl = pull
+	co = checkout
+	cp = cherry-pick
+	cl = clone
+	cn = clone
+	gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
+	l = log --oneline
+	ld = log --decorate --oneline
+	lg = log --decorate --oneline --graph
+	unstage = reset HEAD
+	clear = clean -df
+	# 現在のブランチ名を取得
+	bn = !"git rev-parse --abbrev-ref HEAD|tr -d \\\\r\\\\n"
+[init]
+	defaultBranch = main
+
+[pull]
+	rebase = false
