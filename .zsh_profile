@@ -1,0 +1,60 @@
+# コマンドパス
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+# 履歴ファイルの保存先
+export HISTFILE=${HOME}/.zsh_history
+# メモリに保存される履歴の件数
+export HISTSIZE=1000
+# 履歴ファイルに保存される履歴の件数
+export SAVEHIST=100000
+
+# ショートカット
+alias _="sudo"
+alias mk="mkdir"
+alias el="elixir"
+alias ie="iex"
+alias er="erl"
+alias n="npm"
+alias y="yarn"
+alias yn="yarn"
+alias yr="yarn"
+alias ya="yarn"
+alias fire="firebase"
+alias fr="firebase"
+alias nv='nvim'
+alias vi='vim'
+alias v="vim"
+alias nb="nodebrew"
+alias nodeb="nodebrew"
+alias dock="docker"
+alias dr="docker"
+alias dockc="docker-compose"
+alias dcm="docker-compose"
+alias dm="docker-compose"
+alias dc="docker-compose"
+
+# ls系
+alias ll="ls -la"
+alias l="ls -l"
+
+# git系
+alias g="git"
+alias gb="git branch"
+alias gs="git status"
+alias gd="git diff"
+alias gp="git pull"
+alias gh="git push"
+alias ga="git add ."
+
+# 移動
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ..4='cd ../../../..'
+
+# カスタムコマンド
+
+## direnv
+export EDITOR=vi
+eval "$(direnv hook zsh)"
