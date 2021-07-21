@@ -1,0 +1,26 @@
+{
+    "workbench.colorTheme": "Default High Contrast",
+    "[json]": {
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace"
+    },
+    "editor.formatOnSave": true,
+    "breadcrumbs.enabled": true,
+    "files.associations": {
+        "*.html.eex": "html"
+    },
+    "editor.minimap.enabled": false,
+    "redhat.telemetry.enabled": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 200,
+    "editor.renderWhitespace": "all",
+    "html.format.unformatted": "",
+    "window.zoomLevel": 1,
+    "scm.inputFontSize": 11,
+    "editor.fontSize": 10,
+    "markdown.preview.fontSize": 10,
+    "debug.console.fontSize": 10,
+    "terminal.integrated.fontSize": 10,
+}
