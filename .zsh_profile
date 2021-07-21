@@ -1,10 +1,12 @@
-# コマンドパス
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-# 履歴ファイルの保存先
+
+# zsh設定
+
+## 履歴ファイルの保存先
 export HISTFILE=${HOME}/.zsh_history
-# メモリに保存される履歴の件数
+## メモリに保存される履歴の件数
 export HISTSIZE=1000
-# 履歴ファイルに保存される履歴の件数
+## 履歴ファイルに保存される履歴の件数
 export SAVEHIST=100000
 
 # ショートカット
@@ -38,12 +40,13 @@ alias l="ls -l"
 
 # git系
 alias g="git"
+alias ga="git add ."
 alias gb="git branch"
 alias gs="git status"
-alias gd="git diff"
 alias gp="git pull"
 alias gh="git push"
-alias ga="git add ."
+alias gd="git diff"
+
 
 # 移動
 alias ..='cd ..'
