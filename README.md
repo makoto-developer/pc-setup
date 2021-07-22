@@ -485,6 +485,15 @@ defaults write -g KeyRepeat -int 1
 defaults delete -g InitialKeyRepeat
 defaults delete -g KeyRepeat
 ```
+## Intellijインストール
+
+- toolbox
+- idea
+- rubymine
+- phpstorm
+- webstorm
+- grip
+- goland
 
 ## AWSの設定
 ## GCPの設定
