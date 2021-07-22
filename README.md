@@ -492,13 +492,61 @@ defaults delete -g KeyRepeat
 ```
 ## Intellijインストール
 
-- toolbox
-- idea
-- rubymine
-- phpstorm
-- webstorm
-- grip
-- goland
+### インストールするアプリ
+- toolbox -> 前夫管理
+- idea -> テキスト or その他
+- rubymine -> Ruby Elixir Phoenix
+- phpstorm -> PHP 
+- webstorm -> React/Vue/Elm
+- grip -> MySQL
+- goland -> Golang
+
+### 2. プラグイン
+
+**共通**
+
+- vimidea
+- rainbow bracket
+- intedent rainbow
+- rainbow csv
+- prettier
+
+**rubymineだけ**
+
+- dark purple thema
+- erlang
+- elixir
+
+
+**ideaだけ**
+
+- one dark theam
+
+**webstormだけ**
+
+- Monokai Pro thema
+- elm
+- intelliVue
+
+
+### 3. きもいフォントを変える
+
+```zsh
+brew tap homebrew/cask-fonts
+brew install font-hackgen
+brew install font-hackgen-nerd
+```
+
+参考: https://github.com/yuru7/HackGen
+
+### 4. ショートカット
+
+vsplit: cmd shift ctrl ↑
+split: cmd shift ctrl ↓
+open git: cmd ctrl 7 
+open terminal: cmd ctrl 8
+markdown show only editor: cmd shift p
+
 
 ## AWSの設定
 ## GCPの設定
