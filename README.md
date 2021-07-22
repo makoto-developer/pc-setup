@@ -19,8 +19,13 @@
 ## Karabinerの設定
 ## itermの設定
 
+### 1. カラーを変更
+
 profile -> new Profile
 
+### 2. Command + Enterで最大化されるのを無効にする
+
+Keys -> Key Bindings -> +ボタン -> ´´´CMD +  ENTER´´´ is disabled`
 
 ## workディレクトリの作成
 
