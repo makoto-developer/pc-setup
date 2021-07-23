@@ -528,8 +528,8 @@ brew install font-hackgen-nerd
 
 vsplit: cmd shift ctrl ↑
 split: cmd shift ctrl ↓
-source ~/.zsh_profileopen git: cmd ctrl 7 
-open terminal: cmd ctrl 8
+source git: cmd 9
+open terminal: cmd shift 9
 markdown show only editor: cmd shift p
 
 ### 5. ファイルの履歴数
