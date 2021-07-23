@@ -571,7 +571,15 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 touch ~/.oh-my-zsh/themes/makoto-custom.zsh-theme
 ```
 
-makoto-custom.zsh-themeをコピペする
+.makoto-custom.zsh-themeをコピペする
+
+
+### 5-4. .zshrcのコメントアウトを外して、色々設定する
+
+CASE_SENSITIVE -> コメントアウトを外す
+
+HIST_STAMPS -> 日付フォーマットを変更する
+HIST_STAMPS="yyyy-mm-dd"
 
 
 ### OnyX Macの無駄な設定を根こそぎオフ
