@@ -3,6 +3,7 @@
 ## アプリのインストール
 
 - Google Chrome
+- Google IME
 - Slack
 - iterm
 - Visual Studio Code
@@ -14,9 +15,34 @@
 - Itsycal(メニューバーカレンダーアプリ)
 - Google IEM
 - Wally(Ergodoxの設定アプリ)
+- OnyX
+- Intellij Toolbox
+- twitter
+- discord
+- focus to-do
+- office excel powerpoint
+- kindle
 
 ## Macのシステム環境設定
+
+### キーボードショートカット
+
+**Mission Control**
+
+- 最新の使用状況に基づいて操作スペースうを自動で並び替える -> チェック外す
+- ウィンドウをアプリケーションごとにグループ化
+
+**Siri**
+
+無効化
+
+**XXXXXXXXX**
+TODO 書く
+
 ## Karabinerの設定
+
+いれたけど特に設定無し
+
 ## itermの設定
 
 ### 1. カラーを変更
@@ -40,58 +66,8 @@ touch .zshrc
 touch .zsh_profile
 ```
 
-```zsh
-echo "source ~/.zsh_profile" >> .zshrc
-```
-
-.zsh_profileに以下の内容を貼り付ける
-
-```zsh
-## 環境変数
-
-
-## ショートカット
-alias _="sudo"
-alias mk="mkdir"
-alias eli="elixir"
-alias el="elixir"
-alias ie="iex"
-alias er="erl"
-alias n="npm"
-alias y="yarn"
-alias fire="firebase"
-alias fr="firebase"
-alias nv='nvim'
-alias vi='vim'
-alias v="vim"
-alias nb="nodebrew"
-alias nodeb="nodebrew"
-
-## ls系
-alias ll="ls -la"
-alias l="ls -l"
-
-## git系
-alias g="git"
-
-## 移動
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias ..2='cd ../..'
-alias ..3='cd ../../..'
-
-
-## カスタムコマンド
-
-
-```
-
-## Gitの設定
-
-```zsh
-vim ~/.gitconfig
-```
+.zshrc
+.zsh_profile
 
 メールは現在はこれ: 72484465+makoto-engineer@users.noreply.github.com
 
@@ -481,7 +457,7 @@ sudo chown -R ユーザ名.local/share/nvim
 ## キーリピート設定変更
 
 ```
-defaults write -g InitialKeyRepeat -int 13
+defaults write -g InitialKeyRepeat -int 11
 defaults write -g KeyRepeat -int 1
 ```
 
@@ -490,9 +466,11 @@ defaults write -g KeyRepeat -int 1
 defaults delete -g InitialKeyRepeat
 defaults delete -g KeyRepeat
 ```
-## Intellijインストール
+
+## Intellijインストール & 設定
 
 ### インストールするアプリ
+
 - toolbox -> 前夫管理
 - idea -> テキスト or その他
 - rubymine -> Ruby Elixir Phoenix
@@ -537,15 +515,83 @@ brew install font-hackgen
 brew install font-hackgen-nerd
 ```
 
+
+- Editor -> Font
+- Font: Hackgin35
+- size: 17
+- line height: 1
+
+
 参考: https://github.com/yuru7/HackGen
 
 ### 4. ショートカット
 
 vsplit: cmd shift ctrl ↑
 split: cmd shift ctrl ↓
-open git: cmd ctrl 7 
+source ~/.zsh_profileopen git: cmd ctrl 7 
 open terminal: cmd ctrl 8
 markdown show only editor: cmd shift p
+
+### 5. ファイルの履歴数
+
+Editor -> General -> limits
+
+- Recent file limits: 500
+- Recent location limit: 500
+
+## プロンプトのカスタマイズ
+
+### 5-1. フォントをインストール
+
+```zsh
+# clone
+git clone https://github.com/powerline/fonts.git --depth=1
+# install
+cd fonts
+./install.sh
+# clean-up a bit
+cd ..
+rm -rf fonts
+```
+
+itermの設定を開き、フォントを´DejaVu Sans Mono Powerline´に設定する
+
+### 5-2. Oh-my-zshをインストール
+
+こちらを参照 : https://www.freecodecamp.org/news/jazz-up-your-zsh-terminal-in-seven-steps-a-visual-guide-e81a8fd59a38/
+
+
+```zsh
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+### 5-3. Oh-my-zshのテーマを変える
+
+```
+touch ~/.oh-my-zsh/themes/makoto-custom.zsh-theme
+```
+
+makoto-custom.zsh-themeをコピペする
+
+
+### OnyX Macの無駄な設定を根こそぎオフ
+
+
+**各種設定 -> 一般**
+
+- ウィンドウを開くときにグラフィックエフェクトを表示: off
+
+**各種設定 -> 一般**
+
+- ウィンドウのズーム: off
+- 情報ウィンドウのアニメーション: off
+- 不可視ファイルの/フォルダを表示: on
+- ウィンドウのタイトルにパスを表示: on
+
+**各種設定 -> Dock**
+
+- アニメーション -> アプリケーションの起動: off
+- アニメーション -> バックグラウンドの警告: off
 
 
 ## AWSの設定
