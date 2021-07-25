@@ -571,7 +571,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 touch ~/.oh-my-zsh/themes/makoto-custom.zsh-theme
 ```
 
-.makoto-custom.zsh-themeをコピペする
+makoto-custom.zsh-themeをコピペする
 
 
 ### 5-4. .zshrcのコメントアウトを外して、色々設定する
