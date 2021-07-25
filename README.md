@@ -602,6 +602,19 @@ HIST_STAMPS="yyyy-mm-dd"
 - アニメーション -> バックグラウンドの警告: off
 
 
+## Golang インストール
+
+こちらからpkgをインストール: https://golang.org/doc/install
+
+## Twitter CLI twtyをインストール
+
+go get github.com/mattn/twty
+
+```zsh
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH #<-- 追記
+```
+
 ## AWSの設定
 ## GCPの設定
 ## PostgreSQLの設定

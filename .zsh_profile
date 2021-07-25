@@ -1,48 +1,42 @@
+# 環境変数
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
 
-# zsh設定
-
-## 履歴ファイルの保存先
-export HISTFILE=${HOME}/.zsh_history
-## メモリに保存される履歴の件数
-export HISTSIZE=1000
-## 履歴ファイルに保存される履歴の件数
-export SAVEHIST=100000
 
 # ショートカット
 alias _="sudo"
 alias mk="mkdir"
 alias el="elixir"
-alias ie="iex"
 alias er="erl"
 alias n="npm"
-alias y="yarn"
 alias yn="yarn"
 alias yr="yarn"
 alias ya="yarn"
+alias y="yarn"
 alias fire="firebase"
 alias fr="firebase"
 alias nv='nvim'
 alias vi='vim'
 alias v="vim"
+alias nd="node"
+alias no="node"
 alias nb="nodebrew"
 alias nodeb="nodebrew"
-alias dock="docker"
-alias dr="docker"
-alias dockc="docker-compose"
-alias dcm="docker-compose"
-alias dm="docker-compose"
+alias dk="docker"
 alias dc="docker-compose"
+alias tw="twty"
+
 
 # ls系
 alias ll="ls -la"
 alias l="ls -l"
 
+
 # git系
 alias g="git"
-alias ga="git add ."
-alias gb="git branch"
+alias ga='git add .'
 alias gs="git status"
+alias gb="git branch"
 alias gp="git pull"
 alias gh="git push"
 alias gd="git diff"
@@ -56,8 +50,13 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 
+
 # カスタムコマンド
 
-## direnv
-export EDITOR=vi
-eval "$(direnv hook zsh)"
+## Elixir/Erlang
+. $HOME/.asdf/asdf.sh
+
+
+# ターミナルのカラーを設定
+ZSH_THEME="makoto-custom"
+

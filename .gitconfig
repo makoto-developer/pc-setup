@@ -6,7 +6,7 @@
 [core]
 	autocrlf = false
 	quotepath = false
-	excludesFile = /Users/iguchi_takashi/.gitignore_global
+	excludesfile = /opt/git/.gitignore_global
 [alias]
 	a = add
 	ad = add
@@ -25,7 +25,6 @@
 	co = checkout
 	cp = cherry-pick
 	cl = clone
-	cn = clone
 	gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 	l = log --oneline
 	ld = log --decorate --oneline
@@ -37,5 +36,4 @@
 [init]
 	defaultBranch = main
 
-[pull]
-	rebase = false
+
