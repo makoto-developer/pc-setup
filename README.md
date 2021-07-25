@@ -608,11 +608,23 @@ HIST_STAMPS="yyyy-mm-dd"
 
 ## Twitter CLI twtyをインストール
 
+インストール方法: https://obel.hatenablog.jp/entry/20200215/1581706800
+
+```zsh
 go get github.com/mattn/twty
+```
+
+パスを追加
 
 ```zsh
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH #<-- 追記
+```
+
+使い方
+
+```zsh
+twty おはよう
 ```
 
 ## AWSの設定
