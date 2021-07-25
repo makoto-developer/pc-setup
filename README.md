@@ -627,6 +627,13 @@ export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH #<-- 追記
 twty おはよう
 ```
 
+## Reactプロジェクトを操作できるようにする
+
+
+```zsh
+npm i -g yarn
+```
+
 ## AWSの設定
 ## GCPの設定
 ## PostgreSQLの設定
