@@ -34,7 +34,7 @@ alias l="ls -l"
 
 # git系
 alias g="git"
-alias ga='git add .'
+alias ga="git add ."
 alias gs="git status"
 alias gb="git branch"
 alias gp="git pull"
