@@ -406,12 +406,20 @@ source git: cmd 9
 open terminal: cmd shift 9
 markdown show only editor: cmd shift p
 
+
 ### 5. ファイルの履歴数
 
 Editor -> General -> limits
 
 - Recent file limits: 500
 - Recent location limit: 500
+
+### 6. markdownのプレビューが自動で表示されないように修正する
+
+
+language Framwork > Default Layout 
+
+Editor onlyに変更
 
 ## プロンプトのカスタマイズ
 
@@ -430,7 +438,7 @@ rm -rf fonts
 
 itermの設定を開き、フォントを´DejaVu Sans Mono Powerline´に設定する
 
-### 5-2. Oh-my-zshをインストール
+### 5-2. ~~Oh-my-zshをインストール~~ 重いので入れない
 
 こちらを参照 : https://www.freecodecamp.org/news/jazz-up-your-zsh-terminal-in-seven-steps-a-visual-guide-e81a8fd59a38/
 
@@ -439,7 +447,7 @@ itermの設定を開き、フォントを´DejaVu Sans Mono Powerline´に設定
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-### 5-3. Oh-my-zshのテーマを変える
+### 5-3. ~~Oh-my-zshのテーマを変える~~
 
 ```
 touch ~/.oh-my-zsh/themes/makoto-custom.zsh-theme
@@ -448,7 +456,7 @@ touch ~/.oh-my-zsh/themes/makoto-custom.zsh-theme
 makoto-custom.zsh-themeをコピペする
 
 
-### 5-4. .zshrcのコメントアウトを外して、色々設定する
+### 5-4. ~~.zshrcのコメントアウトを外して、色々設定する~~
 
 CASE_SENSITIVE -> コメントアウトを外す
 
@@ -463,7 +471,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 - ウィンドウを開くときにグラフィックエフェクトを表示: off
 
-**各種設定 -> 一般**
+**各種設定 -> Finder**
 
 - ウィンドウのズーム: off
 - 情報ウィンドウのアニメーション: off
@@ -474,6 +482,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 - アニメーション -> アプリケーションの起動: off
 - アニメーション -> バックグラウンドの警告: off
+- アニメーション -> ディスプレイ -> アニメーションの停止
 
 
 ## Golang インストール
