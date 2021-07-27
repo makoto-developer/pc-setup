@@ -24,6 +24,10 @@
 - office excel powerpoint
 - kindle
 
+## カスペルスキー
+
+アクティベーションコードをいれる
+
 ## Macのシステム環境設定
 
 ### キーボードショートカット
@@ -168,13 +172,33 @@ sudo xcodebuild -license accept
 
 https://github.com/hokaccha/nodebrew
 
+nodebrewをインストール
+
+```zsh
+curl -L git.io/nodebrew | perl - setup
 ```
 
+.zsh_profileに追加
+
+```
 ```zsh
 vim .zsh_profile
 
-# 追加
-export PATH=$HOME/.nodebrew/current/bin:$PATH
+# export PATH=$HOME/.nodebrew/current/bin:$PATH # <- コメントアウトをはずす
+```
+
+
+
+```zsh
+nodebrew ls-remote
+```
+
+```zsh
+nodebrew install-binary v12.22.3
+```
+
+```zsh
+nodebrew use v12.22.3
 ```
 
 ## VScode
@@ -380,6 +404,10 @@ defaults delete -g KeyRepeat
 - elm
 - intelliVue
 
+**php storm**
+
+- atom dark
+
 
 ### 3. きもいフォントを変える
 
@@ -489,6 +517,15 @@ HIST_STAMPS="yyyy-mm-dd"
 
 こちらからpkgをインストール: https://golang.org/doc/install
 
+
+.zsh_profileのコメントアウトを外す
+
+
+```zsh
+# export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH # <- コメントを外す
+export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
+```
+
 ## Twitter CLI twtyをインストール
 
 インストール方法: https://obel.hatenablog.jp/entry/20200215/1581706800
@@ -516,6 +553,10 @@ twty おはよう
 ```zsh
 npm i -g yarn
 ```
+
+## direnv
+
+TODO
 
 ## AWSの設定
 ## GCPの設定
