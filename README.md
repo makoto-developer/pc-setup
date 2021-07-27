@@ -5,12 +5,13 @@
 - Google Chrome
 - Google IME
 - Slack
-- iterm
+- irerm
 - Visual Studio Code
 - Xcode(Apple Storeからダウンロードしてインストール)
 - Rectangle
 - Clipy
 - Karabiner-Element
+- カスペルスキー
 - Just Forcus（ポモドーロテクニックアプリ）
 - Itsycal(メニューバーカレンダーアプリ)
 - Google IEM
@@ -39,9 +40,11 @@
 **XXXXXXXXX**
 TODO 書く
 
+
 ## Karabinerの設定
 
 いれたけど特に設定無し
+
 
 ## itermの設定
 
@@ -53,6 +56,12 @@ profile -> new Profile
 
 Keys -> Key Bindings -> +ボタン -> ´´´CMD +  ENTER´´´ is disabled`
 
+### 3. バッファーの行数を増やす
+
+Profiles -> Terminal -> Scrollback Buffer
+1,00000
+
+
 ## workディレクトリの作成
 
 ```zsh
@@ -61,60 +70,20 @@ mkdir 会社名
 
 ## zshの設定
 
-```zsh
-touch .zshrc
-touch .zsh_profile
-```
+↓を参照
 
 .zshrc
 .zsh_profile
 
-メールは現在はこれ: 72484465+makoto-engineer@users.noreply.github.com
+## gitconfig
 
-```zsh
-[user]
-	name = makoto
-	email = 72484465+makoto-engineer@users.noreply.github.com
-[push]
-	default = current
-[core]
-	autocrlf = false
-	quotepath = false
-	excludesfile = /opt/git/.gitignore_global
-[alias]
-	a = add
-	ad = add
-	s = status
-	st = status
-	ss = stash
-	ft = fetch
-	df = diff
-	dfw = diff --word-diff
-	dfn = diff --name-only
-	cm = commit
-	b = branch
-	br = branch
-	ps = push
-	pl = pull
-	co = checkout
-	cp = cherry-pick
-	cl = clone
-	gr = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
-	l = log --oneline
-	ld = log --decorate --oneline
-	lg = log --decorate --oneline --graph
-	unstage = reset HEAD
-	clear = clean -df
-	# 現在のブランチ名を取得
-	bn = !"git rev-parse --abbrev-ref HEAD|tr -d \\\\r\\\\n"
-[init]
-	defaultBranch = main
+↓を参照
 
-```
+.gitconfig
 
 ### グローバルなgitignore
 
-vim ~/.gitignore_global
+touch ~/.gitignore_global
 
 ```zsh
 .DS_Store
@@ -171,137 +140,27 @@ cat ~/.ssh/id_rsa.pub
 
 ## vim/Neovimの設定
 
-まずはvimの基本設定から
-```zsh
-vim ~/.vimrc
-```
+↓を参照
 
-以下の内容を貼り付ける
+.vimrc
 
-```
-"****************************************************************
-" 文字コード
-"****************************************************************
-set encoding=UTF-8
-scriptencoding utf-8
-set fileencoding=utf-8
-
-"****************************************************************
-" 検索
-"****************************************************************
-" 大文字小文字を区別しない
-set ignorecase
-" 小文字で検索するとき、大文字と小文字を無視
-set smartcase
-" ファイル末尾まで進んだら、先頭へジャンプ
-set wrapscan
-" インクリメンタル検索 (検索ワードの最初の文字を入力した時点で検索が開始)
-set incsearch
-" 検索結果をハイライト表示
-set hlsearch
-hi Search ctermbg=lightyellow
-hi Search ctermfg=Black
-" Escの2回押しでハイライト消去
-nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
-
-"****************************************************************
-" バックアップ
-"****************************************************************
-" ファイルを上書きする前にバックアップを作ることを無効化
-set nowritebackup
-set nobackup
-" スワップファイルを作成しない
-set noswapfile
-
-"****************************************************************
-" 移動
-"****************************************************************
-" vim の矩形選択で文字が無くても右へ進める
-set virtualedit=block
-" 行をまたいで移動
-set whichwrap=b,s,h,l,<,>,[,],~
-
-"****************************************************************
-" 表示設定
-"****************************************************************
-" 行表示
-set nu
-" エラーのときビープを鳴らさない
-set noerrorbells
-" 対応する括弧を強調表示
-set showmatch
-" 対応する括弧やブレースを表示
-set showmatch matchtime=1
-" 行末のスペースを可視化
-set listchars=tab:^\ ,trail:~
-" コマンドラインの履歴を5000件保存する
-set history=5000
-" コメントの色を水色
-hi Comment ctermfg=3
-" yでコピーした時にクリップボードに入る
-set guioptions+=a
-" タイトルを表示
-set title
-" ヤンクでクリップボードにコピー
-set clipboard=unnamed,autoselect
-" 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
-" タブ文字の表示幅
-set tabstop=2
-" Vimが挿入するインデントの幅
-set shiftwidth=2
-
-"****************************************************************
-" Ctrl + hjilでウィンドウ移動ができる
-"****************************************************************
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-
-"****************************************************************
-" マクロ的な何か...
-"****************************************************************
-" 自動でvimrcの設定が反映される
-augroup source-vimrc
-  autocmd!
-  autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
-  autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
-augroup END
-
-" auto comment off
-augroup auto_comment_off
-  autocmd!
-  autocmd BufEnter * setlocal formatoptions-=r
-  autocmd BufEnter * setlocal formatoptions-=o
-augroup END
-
-" HTML/XML閉じタグ自動補完
-augroup MyXML
-  autocmd!
-  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-augroup END
-
-" 編集箇所のカーソルを記憶
-if has("autocmd")
-  augroup redhat
-    " In text files, always limit the width of text to 78 characters
-    autocmd BufRead *.txt set tw=78
-    " When editing a file, always jump to the last cursor position
-    autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \   exe "normal! g'\"" |
-    \ endif
-  augroup END
-endif
-```
 
 ## brew
 
 こちらを見ながらやる
 
 https://brew.sh/index_ja
+
+
+```zsh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+## Xcodeを入れる
+
+```zsh
+sudo xcodebuild -license accept
+```
 
 ## nodebrew/Node.js/yarnの設定
 
@@ -361,6 +220,8 @@ https://asdf-vm.com/#/core-manage-asdf
 macOS -> Homebrew 経由でインストール
 
 ```
+brew install asdf
+or
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.1
 ```
 
@@ -378,35 +239,7 @@ asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 ```
 
-### Erlangインストール
-
-最新のErlangを確認
-
-```zsh
-asdf list-all erlang
-```
-
-最新のErlangを入れる
-
-```zsh
-asdf install erlang 24.0.3
-```
-
-インストール済みのErlangのバージョンを確認
-
-```zsh
-asdf list erlang
-```
-
-Erlangを使えるようにする
-
-```zsh
-asdf global erlang 24.0.3
-```
-
 ### Elixirをインストール
-
-Erlangと同じく、インストール可能なElixirバージョンを確認
 
 ```
 asdf list-all elixir
@@ -427,6 +260,47 @@ Elixirを使えるようにする
 
 ```zsh
 asdf global elixir 1.12.2-otp-24
+```
+
+### Erlangインストール
+
+elixirと同じく、インストール可能なElixirバージョンを確認
+
+```zsh
+asdf list-all erlang
+```
+
+最新のErlangを入れる
+
+```zsh
+asdf install erlang 24.0.4
+```
+
+インストール済みのErlangのバージョンを確認
+
+```zsh
+asdf list erlang
+```
+
+Erlangを使えるようにする
+
+```zsh
+asdf global erlang 24.0.4
+```
+### 動作確認
+
+.zsh_profileのコメントアウトを外す
+
+```zsh
+.  $(brew --prefix asdf)/asdf.sh
+```
+
+以下のコマンドが使えるかチェック
+
+```zsh
+iex
+erl
+mix
 ```
 
 ### Phoenix
@@ -457,7 +331,7 @@ sudo chown -R ユーザ名.local/share/nvim
 ## キーリピート設定変更
 
 ```
-defaults write -g InitialKeyRepeat -int 11
+defaults write -g InitialKeyRepeat -int 13
 defaults write -g KeyRepeat -int 1
 ```
 

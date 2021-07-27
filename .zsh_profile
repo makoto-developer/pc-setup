@@ -1,6 +1,17 @@
 # 環境変数
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
+#export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
+
+# zsh history
+
+## 履歴ファイルの保存先
+export HISTFILE=${HOME}/.zsh_history
+## メモリに保存される履歴の件数
+export HISTSIZE=1000
+## 履歴ファイルに保存される履歴の件数
+export SAVEHIST=1000000
+## 開始と終了を記録
+setopt EXTENDED_HISTORY
 
 
 # ショートカット
@@ -22,9 +33,10 @@ alias nd="node"
 alias no="node"
 alias nb="nodebrew"
 alias nodeb="nodebrew"
-alias dk="docker"
+alias dr="docker"
 alias dc="docker-compose"
 alias tw="twty"
+alias bw="brew"
 
 
 # ls系
@@ -54,9 +66,7 @@ alias ..4='cd ../../../..'
 # カスタムコマンド
 
 ## Elixir/Erlang
-. $HOME/.asdf/asdf.sh
+#.  $(brew --prefix asdf)/asdf.sh
 
 
-# ターミナルのカラーを設定
-ZSH_THEME="makoto-custom"
 

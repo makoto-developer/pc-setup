@@ -6,7 +6,7 @@
 [core]
 	autocrlf = false
 	quotepath = false
-	excludesfile = /opt/git/.gitignore_global
+	#excludesfile = /User/makoto/.gitignore_global
 [alias]
 	a = add
 	ad = add
