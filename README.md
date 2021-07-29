@@ -23,6 +23,9 @@
 - focus to-do
 - office excel powerpoint
 - kindle
+- docker
+- onyx
+- MindNode
 
 ## カスペルスキー
 
@@ -103,6 +106,8 @@ https://qiita.com/takuya0301/items/29187aa088d04cf92659
 
 
 ## SSHの設定
+
+.ssh/をコピペして、chmod 700を設定する
 
 参考
 
