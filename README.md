@@ -563,6 +563,48 @@ npm i -g yarn
 
 TODO
 
+## Rust install
+
+こちらを参考: https://www.rust-lang.org/tools/install
+
+```zsh
+brew tap helix-editor/helix
+brew install helix
+```
+
+```
+hx
+```
+
+
+## MySQL
+
+mysqlサーバを建てる
+
+```zsh
+docker-compose up -d
+docker-compose exec db mysql -V
+docker-compose exec db bash -c 'mysql -u${MYSQL_USER} -p${MYSQL_PASSWORD} ${MYSQL_DATABASE}'
+```
+
+テーブルを見る
+show tables from homestead;
+
+テーブルを作る
+
+create table homestead.todo (id int, title varchar(10), type int, contents LONGTEXT);
+create table homestead.todo (id int not null auto_increament, title varchar(10), type int, contents LONGTEXT, primary key(id));
+
+データを入れる
+
+
+
+## cap
+
+動画キャプチャツール
+
+https://getkap.co/
+
 ## AWSの設定
 ## GCPの設定
 ## PostgreSQLの設定
