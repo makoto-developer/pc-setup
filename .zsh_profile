@@ -3,10 +3,6 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
 export PATH=$HOME/go/bin:$PATH
 
-export CLICOLOR=1
-export TERM=xterm-256color
-export LSCOLORS="GxFxCxDxBxegedabagaced"
-
 # zsh設定
 
 ## 履歴ファイルの保存先
@@ -17,6 +13,28 @@ export HISTSIZE=1000
 export SAVEHIST=100000
 # 同時に起動したzshの間でヒストリを共有
 setopt share_history
+# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+setopt auto_param_slash
+# ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
+setopt mark_dirs
+# コマンドラインでも # 以降をコメントと見なす
+setopt interactive_comments 
+# コマンドを途中まで入力後、historyから絞り込み
+autoload -Uz history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^P" history-beginning-search-backward-end
+bindkey "^N" history-beginning-search-forward-end
+
+
+# iterm設定
+export CLICOLOR=1
+export TERM=xterm-256color
+export LSCOLORS="GxFxCxDxBxegedabagaced"
+export LS_COLORS='di=33;:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+export GREP_COLOR='1;33'
+
+
 
 # ショートカット
 alias _="sudo"
@@ -36,27 +54,36 @@ alias vi='vim'
 alias v="vim"
 alias nb="nodebrew"
 alias nodeb="nodebrew"
-alias dock="docker"
 alias dr="docker"
-alias dockc="docker-compose"
-alias dcm="docker-compose"
-alias dm="docker-compose"
 alias dc="docker-compose"
-alias gp="grep"
+alias gp="grep --color=auto"
 alias tw="twty"
+alias grep='grep --color=auto'
 
 # ls系
+alias l='ls -ltrG'
 alias ll="ls -la"
-alias l="ls -l"
+alias ls='ls -G'
 
 # git系
 alias g="git"
-alias ga="git add ."
+alias ga="git add -A"
 alias gb="git branch"
-alias gs="git status"
+alias gs="git status --short --branch"
+alias gc="git commit -m"
 alias gp="git pull"
+alias gf="git fetch"
+alias gfp="git fetch -p"
 alias gh="git push"
+alias gco="git checkout"
+alias gcob="git checkout -b"
 alias gd="git diff"
+# grep
+alias glg='git log --abbrev-commit --no-merges --date=short --date=iso --grep'
+# ローカルコミットを表示
+alias glc='git log --abbrev-commit --no-merges --date=short --date=iso origin/html..html'
+
+
 
 
 # 移動
@@ -66,6 +93,8 @@ alias ....='cd ../../..'
 alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
+
+
 
 # カスタムコマンド
 
@@ -78,39 +107,7 @@ functio tabn() {
   echo -ne "\e]1;$1 $2 $3 $4 $5 $6 $7 $8 $9 \a"
 }
 
-## 補完機能を有効にする
-autoload -Uz compinit
-compinit -u
-if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-
-### 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-### 補完候補を詰めて表示
-setopt list_packed
-
-### 補完候補一覧をカラー表示
-autoload colors
-zstyle ':completion:*' list-colors ''
-
-## git 
-autoload -Uz vcs_info
-setopt prompt_subst
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{magenta}!"
-zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}+"
-zstyle ':vcs_info:*' formats "%F{cyan}%c%u[%b]%f"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () { vcs_info }
-
-## プロンプトカスタマイズ
-PROMPT='
-[%F{green}%~%f]%F{cyan}$vcs_info_msg_0_%f %F{yellow}$%f '
-
 ## itermのタブの色を変更する
-
 function tab-color() {
   echo -ne "\033]6;1;bg;red;brightness;$1\a"
   echo -ne "\033]6;1;bg;green;brightness;$2\a"
@@ -125,5 +122,64 @@ alias t_red='tab-color 255 0 0'
 alias t_pink='tab-color 255 0 255'
 alias t_purple='tab-color 128 0 128'
 alias t_olive='tab-color 128 128 0'
+
+## バックグランドのカラーを変える
+alias b_prod='echo -ne "\033]1337;SetColors=bg=330000\a"'
+alias b_stg='echo -ne "\033]1337;SetColors=bg=003366\a"'
+
+
+## zshの補完機能を有効にする
+autoload -Uz compinit
+compinit -u
+if [ -e /usr/local/share/zsh-completions ]; then
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+### zsh補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+### zsh補完候補を詰めて表示
+setopt list_packed
+
+### zsh補完候補一覧をカラー表示
+autoload colors
+zstyle ':completion:*' list-colors ''
+
+
+fpath=(~/.zsh $fpath)
+if [ -f ${HOME}/.zsh/git-completion.zsh ]; then
+       zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
+fi
+if [ -f ${HOME}/.zsh/git-prompt.sh ]; then
+       source ${HOME}/.zsh/git-prompt.sh
+fi
+
+## プロンプトカスタマイズ
+setopt prompt_subst
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:bzr:*' use-simple true
+zstyle ':vcs_info:git:*' check-for-changes true       # formats 設定項目で %c,%u が使用可
+zstyle ':vcs_info:git:*' stagedstr "%F{red} +"        # commit されていないファイルがある
+zstyle ':vcs_info:git:*' unstagedstr "%F{red} -"      # add されていないファイルがある
+zstyle ':vcs_info:*' formats "%F{green}%b %c%u%m %f"  # 通常
+zstyle ':vcs_info:*' actionformats '[%b|%a]'          # rebase 途中,merge コンフリクト等 formats 外の表示
+
+precmd () { vcs_info }
+PROMPT='%K{250} %F{016}%~%k%K{118}%f%F{250}%f%F{016}%{${vcs_info_msg_0_}%f%k%F{118}%f %# '
+zstyle ':vcs_info:git+set-message:*' hooks git-is_clean git-untracked
+function +vi-git-is_clean(){
+    if [ -z "$(git status --short 2>/dev/null)" ];then
+        hook_com[misc]+="✔"
+    fi
+}
+# unstaged, untrackedの検知
+function +vi-git-untracked() {
+    if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+        hook_com[unstaged]+='%F{red}✗%f'
+    fi
+}
+
 
 
