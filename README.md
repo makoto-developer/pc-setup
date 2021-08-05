@@ -171,6 +171,13 @@ https://brew.sh/index_ja
 sudo xcodebuild -license accept
 ```
 
+
+## direvn
+
+```zsh
+brew install direnv
+```
+
 ## nodebrew/Node.js/yarnの設定
 
 こちらを見ながらやる
@@ -475,7 +482,7 @@ itermの設定を開き、フォントを´DejaVu Sans Mono Powerline´に設定
 ### 5-2 zshの補完をインストール
 
 ```zsh
-rew install zsh-completions
+brew install zsh-completions
 ```
 
 ### 5-3 gitの補完
