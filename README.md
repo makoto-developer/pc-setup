@@ -1,8 +1,5 @@
 # macOSの環境構築
 
-
-
-
 ## アプリのインストール
 
 - Google Chrome
