@@ -145,42 +145,5 @@ setopt list_packed
 autoload colors
 zstyle ':completion:*' list-colors ''
 
-
-fpath=(~/.zsh $fpath)
-if [ -f ${HOME}/.zsh/git-completion.zsh ]; then
-       zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
-fi
-if [ -f ${HOME}/.zsh/git-prompt.sh ]; then
-       source ${HOME}/.zsh/git-prompt.sh
-fi
-
-## プロンプトカスタマイズ
-setopt prompt_subst
-autoload -Uz add-zsh-hook
-autoload -Uz vcs_info
-
-zstyle ':vcs_info:bzr:*' use-simple true
-zstyle ':vcs_info:git:*' check-for-changes true       # formats 設定項目で %c,%u が使用可
-zstyle ':vcs_info:git:*' stagedstr "%F{red} +"        # commit されていないファイルがある
-zstyle ':vcs_info:git:*' unstagedstr "%F{red} -"      # add されていないファイルがある
-zstyle ':vcs_info:*' formats "%F{000}%b %c%u%m %f"    # 通常
-zstyle ':vcs_info:*' actionformats '[%b|%a]'          # rebase 途中,merge コンフリクト等 formats 外の表示
-
-precmd () { vcs_info }
-#PROMPT='%K{250} %F{016}%~%k%K{118}%f%F{250}%f%F{016}%{${vcs_info_msg_0_}%f%k%F{118}%f %# '
-PROMPT='%K{255} %F{016}%~%k%K{118}%f%F{255}%f%F{016}%{${vcs_info_msg_0_}%f%k%F{118}%f %# '
-zstyle ':vcs_info:git+set-message:*' hooks git-is_clean git-untracked
-function +vi-git-is_clean(){
-    if [ -z "$(git status --short 2>/dev/null)" ];then
-        hook_com[misc]+="✔"
-    fi
-}
-# unstaged, untrackedの検知
-function +vi-git-untracked() {
-    if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
-        hook_com[unstaged]+='%F{red}✗%f'
-    fi
-}
-
-
+source ~/.zsh_custom_prompt
 
