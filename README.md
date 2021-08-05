@@ -129,12 +129,12 @@ SHA256:wbTmcTSRnDBvhSGX8lk3cGzPc/KPLyAHBvlbms9yvSw 72484465+makoto-engineer@user
 The key's randomart image is:
 +---[RSA 4096]----+
 |        =+*Boo.  |
-|       o+B*o..=  |
-|        *=+o o + |
 |       o =* . ..+|
-|        S. *   oo|
-|          = o   .|
+|   o    *=+o o + |
 |           = o ..|
+|        *=+o o + |
+|      po .o+    .|
+|        S. *   oo|
 |          . E.+ .|
 |           o .o+.|
 +----[SHA256]-----+
