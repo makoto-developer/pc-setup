@@ -1,5 +1,8 @@
 # macOSの環境構築
 
+
+
+
 ## アプリのインストール
 
 - Google Chrome
@@ -486,6 +489,12 @@ cp /usr/local/Cellar/git/2.32.0_1/etc/bash_completion.d/git-completion.bash ~/.g
 ```
 
 ### 5-4 
+
+```zsh
+brew install zsh-git-prompt
+```
+
+### 5-5
 
 
 ### OnyX Macの無駄な設定を根こそぎオフ
