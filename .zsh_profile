@@ -1,54 +1,59 @@
-# 環境変数
+# コマンドパス
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-#export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
+export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
+export PATH=$HOME/go/bin:$PATH
 
-# zsh history
+export CLICOLOR=1
+export TERM=xterm-256color
+export LSCOLORS="GxFxCxDxBxegedabagaced"
+
+# zsh設定
 
 ## 履歴ファイルの保存先
 export HISTFILE=${HOME}/.zsh_history
 ## メモリに保存される履歴の件数
 export HISTSIZE=1000
 ## 履歴ファイルに保存される履歴の件数
-export SAVEHIST=1000000
-## 開始と終了を記録
-setopt EXTENDED_HISTORY
-
+export SAVEHIST=100000
+# 同時に起動したzshの間でヒストリを共有
+setopt share_history
 
 # ショートカット
 alias _="sudo"
 alias mk="mkdir"
 alias el="elixir"
+alias ie="iex"
 alias er="erl"
 alias n="npm"
+alias y="yarn"
 alias yn="yarn"
 alias yr="yarn"
 alias ya="yarn"
-alias y="yarn"
 alias fire="firebase"
 alias fr="firebase"
 alias nv='nvim'
 alias vi='vim'
 alias v="vim"
-alias nd="node"
-alias no="node"
 alias nb="nodebrew"
 alias nodeb="nodebrew"
+alias dock="docker"
 alias dr="docker"
+alias dockc="docker-compose"
+alias dcm="docker-compose"
+alias dm="docker-compose"
 alias dc="docker-compose"
+alias gp="grep"
 alias tw="twty"
-alias bw="brew"
-
 
 # ls系
 alias ll="ls -la"
 alias l="ls -l"
 
-
 # git系
 alias g="git"
 alias ga="git add ."
-alias gs="git status"
 alias gb="git branch"
+alias gs="git status"
 alias gp="git pull"
 alias gh="git push"
 alias gd="git diff"
@@ -62,14 +67,63 @@ alias ..2='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 
-
 # カスタムコマンド
 
-## Elixir/Erlang
-#.  $(brew --prefix asdf)/asdf.sh #<-コメントアウトを外す
+## direnv
+export EDITOR=vi
+eval "$(direnv hook zsh)"
 
 ## itermのタブに名前をつける
 functio tabn() {
-▸-echo -ne "\e]1;$1$2$3$4$5$6\a"
+  echo -ne "\e]1;$1 $2 $3 $4 $5 $6 $7 $8 $9 \a"
 }
+
+## 補完機能を有効にする
+autoload -Uz compinit
+compinit -u
+if [ -e /usr/local/share/zsh-completions ]; then
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+### 補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+### 補完候補を詰めて表示
+setopt list_packed
+
+### 補完候補一覧をカラー表示
+autoload colors
+zstyle ':completion:*' list-colors ''
+
+## git 
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{magenta}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{yellow}+"
+zstyle ':vcs_info:*' formats "%F{cyan}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+
+## プロンプトカスタマイズ
+PROMPT='
+[%F{green}%~%f]%F{cyan}$vcs_info_msg_0_%f %F{yellow}$%f '
+
+## itermのタブの色を変更する
+
+function tab-color() {
+  echo -ne "\033]6;1;bg;red;brightness;$1\a"
+  echo -ne "\033]6;1;bg;green;brightness;$2\a"
+  echo -ne "\033]6;1;bg;blue;brightness;$3\a"
+}
+
+alias t_yellow='tab-color 255 255 0'
+alias t_blue='tab-color 0 0  255'
+alias t_green='tab-color 0 128 128'
+alias t_aqua='tab-color 0 255  255'
+alias t_red='tab-color 255 0 0'
+alias t_pink='tab-color 255 0 255'
+alias t_purple='tab-color 128 0 128'
+alias t_olive='tab-color 128 128 0'
+
 

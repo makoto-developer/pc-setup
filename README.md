@@ -456,7 +456,7 @@ Editor onlyに変更
 
 ## プロンプトのカスタマイズ
 
-### 5-1. フォントをインストール
+### 5-1. フォントをインストール 
 
 ```zsh
 # clone
@@ -471,30 +471,21 @@ rm -rf fonts
 
 itermの設定を開き、フォントを´DejaVu Sans Mono Powerline´に設定する
 
-### 5-2. ~~Oh-my-zshをインストール~~ 重いので入れない
 
-こちらを参照 : https://www.freecodecamp.org/news/jazz-up-your-zsh-terminal-in-seven-steps-a-visual-guide-e81a8fd59a38/
-
+### 5-2 zshの補完をインストール
 
 ```zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+rew install zsh-completions
 ```
 
-### 5-3. ~~Oh-my-zshのテーマを変える~~
+### 5-3 gitの補完
 
+```zsh
+# バージョンが違うかもしれないので適宜修正
+cp /usr/local/Cellar/git/2.32.0_1/etc/bash_completion.d/git-completion.bash ~/.git-completion.bash
 ```
-touch ~/.oh-my-zsh/themes/makoto-custom.zsh-theme
-```
 
-makoto-custom.zsh-themeをコピペする
-
-
-### 5-4. ~~.zshrcのコメントアウトを外して、色々設定する~~
-
-CASE_SENSITIVE -> コメントアウトを外す
-
-HIST_STAMPS -> 日付フォーマットを変更する
-HIST_STAMPS="yyyy-mm-dd"
+### 5-4 
 
 
 ### OnyX Macの無駄な設定を根こそぎオフ
