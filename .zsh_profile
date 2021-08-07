@@ -98,6 +98,10 @@ alias ..4='cd ../../../..'
 
 # カスタムコマンド
 
+## パスワードジェネレータ
+
+alias passgen='openssl rand -base64 16 | pbcopy'
+
 ## direnv
 export EDITOR=vi
 eval "$(direnv hook zsh)"
@@ -127,6 +131,10 @@ alias t_olive='tab-color 128 128 0'
 alias b_prod='echo -ne "\033]1337;SetColors=bg=330000\a"'
 alias b_stg='echo -ne "\033]1337;SetColors=bg=003366\a"'
 
+## itermのプロファイルを切り替えるコマンド
+
+alias chpf='(){echo -e "\033]1337;SetProfile=$1\a"}'
+
 
 ## zshの補完機能を有効にする
 autoload -Uz compinit
@@ -145,5 +153,6 @@ setopt list_packed
 autoload colors
 zstyle ':completion:*' list-colors ''
 
+### プロンプトの見た目をカスタマイズ
 source ~/.zsh_custom_prompt
 
