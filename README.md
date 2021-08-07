@@ -129,12 +129,12 @@ SHA256:wbTmcTSRnDBvhSGX8lk3cGzPc/KPLyAHBvlbms9yvSw 72484465+makoto-engineer@user
 The key's randomart image is:
 +---[RSA 4096]----+
 |        =+*Boo.  |
-|       o+B*o..=  |
-|        *=+o o + |
 |       o =* . ..+|
-|        S. *   oo|
-|          = o   .|
+|   o    *=+o o + |
 |           = o ..|
+|        *=+o o + |
+|      po .o+    .|
+|        S. *   oo|
 |          . E.+ .|
 |           o .o+.|
 +----[SHA256]-----+
@@ -169,6 +169,13 @@ https://brew.sh/index_ja
 
 ```zsh
 sudo xcodebuild -license accept
+```
+
+
+## direvn
+
+```zsh
+brew install direnv
 ```
 
 ## nodebrew/Node.js/yarnの設定
@@ -475,7 +482,7 @@ itermの設定を開き、フォントを´DejaVu Sans Mono Powerline´に設定
 ### 5-2 zshの補完をインストール
 
 ```zsh
-rew install zsh-completions
+brew install zsh-completions
 ```
 
 ### 5-3 gitの補完
