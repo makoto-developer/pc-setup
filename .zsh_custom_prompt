@@ -5,23 +5,111 @@ autoload -Uz vcs_info
 
 zstyle ':vcs_info:bzr:*' use-simple true
 zstyle ':vcs_info:git:*' check-for-changes true       # formats 設定項目で %c,%u が使用可
-zstyle ':vcs_info:git:*' stagedstr "%F{red} +"        # commit されていないファイルがある
-zstyle ':vcs_info:git:*' unstagedstr "%F{red} -"      # add されていないファイルがある
+zstyle ':vcs_info:git:*' stagedstr "%F{red}+"        # commit されていないファイルがある
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}-"      # add されていないファイルがある
 zstyle ':vcs_info:*' formats "%F{000}%b %c%u%m %f"    # 通常
 zstyle ':vcs_info:*' actionformats '[%b|%a]'          # rebase 途中,merge コンフリクト等 formats 外の表示
 
 precmd () { vcs_info }
-PROMPT='%K{255} %F{016}%~%k%K{118}%f%F{255}%f%F{016}%{${vcs_info_msg_0_}%f%k%F{118}%f %# '
-zstyle ':vcs_info:git+set-message:*' hooks git-is_clean git-untracked
-function +vi-git-is_clean(){
-    if [ -z "$(git status --short 2>/dev/null)" ];then
-        hook_com[misc]+="✔"
-    fi
+
+function left-prompt {
+  name_b='000m%}'    # user name background color
+  path_t='255m%}'     # path text clolr
+  path_b='031m%}'   # path background color
+  arrow='087m%}'   # arrow color
+  text_color='%{\e[38;5;'    # set text color
+  back_color='%{\e[30;48;5;' # set background color
+  reset='%{\e[0m%}'   # reset
+  sharp="\uE0B0"      # triangle
+
+  dir="${back_color}${path_b}${text_color}${path_t}"
+  #echo "%m${back_color}${path_b}${text_color}${name_b}${sharp} ${dir}%~${reset}${text_color}${path_b}${sharp}${reset}${text_color}${arrow} ${reset}"
+  echo "${back_color}${path_b}${text_color}${name_b} ${dir}%~${reset}${text_color}${path_b}${sharp}${reset}${text_color} ${reset}"
 }
-# unstaged, untrackedの検知
-function +vi-git-untracked() {
-    if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
-        hook_com[unstaged]+='%F{red}✗%f'
-    fi
+
+
+# git ブランチ名を色付きで表示させるメソッド
+function rprompt-git-current-branch {
+  local branch_name st branch_status
+
+  local branch='\ue0a0'
+  local color='%{\e[38;5;' #  文字色を設定
+  local green='114m%}'
+  local red='001m%}'
+  local yellow='227m%}'
+  local blue='033m%}'
+  local reset='%{\e[0m%}'   # reset
+
+  local color='%{\e[38;5;' #  文字色を設定
+  local green='114m%}'
+
+  local text_color='%{\e[38;5;'    # set text color
+  local arrow='087m%}'   # arrow color
+  local sharp="\uE0B0"      # triangle
+  local back_color='%{\e[35;5;' # set background color
+  local path_b='031m%}'   # path background color
+
+  # ブランチマーク
+  if [ ! -e  ".git" ]; then
+    # git 管理されていないディレクトリは何も返さない
+    return
+  fi
+    branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+    local st=`git status 2> /dev/null`
+  if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
+    # 全て commit されてクリーンな状態
+    local branch_status="${back_color}${color}${green}${branch}"
+  elif [[ -n `echo "$st" | grep "^Untracked files"` ]]; then
+    # git 管理されていないファイルがある状態
+    local branch_status="${back_color}${color}${red}${branch}?"
+  elif [[ -n `echo "$st" | grep "^Changes not staged for commit"` ]]; then
+    # git add されていないファイルがある状態
+    local branch_status="${back_color}${color}${red}${branch}+"
+  elif [[ -n `echo "$st" | grep "^Changes to be committed"` ]]; then
+    # git commit されていないファイルがある状態
+    local branch_status="${back_color}${color}${yellow}${branch}!"
+  elif [[ -n `echo "$st" | grep "^rebase in progress"` ]]; then
+    # コンフリクトが起こった状態
+    echo "${back_color}${color}${red}${branch}!(no branch)${reset}"
+    return
+  else
+    # 上記以外の状態の場合
+    local branch_status="$${back_color}{color}${blue}${branch}"
+  fi
+
+  # ブランチ名を色付きで表示する
+  #echo "${branch_status}$branch_name${reset}"
+  local branch="${branch_status}$branch_name${reset}"
+  echo " ${back_color}${path_b}${text_color}${name_b} ${dir}${branch}${reset}${text_color}${path_b} ${sharp}${reset}${text_color} ${reset}"
 }
+
+
+PROMPT='`left-prompt``rprompt-git-current-branch`'
+
+
+#zstyle ':vcs_info:git+set-message:*' hooks git-is_clean git-untracked
+#function +vi-git-is_clean(){
+#    if [ -z "$(git status --short 2>/dev/null)" ];then
+#        hook_com[misc]+="✔"
+#    fi
+#}
+## unstaged, untrackedの検知
+#function +vi-git-untracked() {
+#    if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+#        hook_com[unstaged]+='%F{red}✗%f'
+#    fi
+#}
+
+
+# コマンドの実行ごとに改行
+function precmd() {
+  # Print a newline before the prompt, unless it's the
+  # first prompt in the process.
+  if [ -z "$NEW_LINE_BEFORE_PROMPT" ]; then
+      NEW_LINE_BEFORE_PROMPT=1
+  elif [ "$NEW_LINE_BEFORE_PROMPT" -eq 1 ]; then
+      echo ""
+  fi
+}
+
 
