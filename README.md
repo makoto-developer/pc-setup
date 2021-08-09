@@ -527,6 +527,45 @@ cp /usr/local/Cellar/git/2.32.0_1/etc/bash_completion.d/git-completion.bash ~/.g
 export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
 ```
 
+
+asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+
+最新のバージョンをインストール
+asdf list all golang
+
+asdf install golang 1.17rc2
+
+
+```text
+awscli
+elixir
+elm
+erlang
+gcloud
+github-cli
+github-markdown-toc
+gitui
+haskell
+helm
+httpie-go -> HTTPie
+mysql
+neovim
+nim
+nodejs
+php
+python
+
+rabbitmq
+redis
+redis-cli
+swift
+v
+vim
+
+```
+
+
+
 ## Twitter CLI twtyをインストール
 
 インストール方法: https://obel.hatenablog.jp/entry/20200215/1581706800
@@ -600,6 +639,13 @@ create table homestead.todo (id int not null auto_increament, title varchar(10),
 動画キャプチャツール
 
 https://getkap.co/
+
+
+## 不要なショートカットを無効化
+
+**CMD + mでしまう**
+cmd + opt + \/|
+![img.png](img.png)
 
 ## AWSの設定
 ## GCPの設定
