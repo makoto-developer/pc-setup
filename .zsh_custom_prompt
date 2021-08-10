@@ -84,7 +84,7 @@ function rprompt-git-current-branch {
 }
 
 
-PROMPT='`left-prompt``rprompt-git-current-branch`'
+PROMPT='`left-prompt``rprompt-git-current-branch` '
 
 
 #zstyle ':vcs_info:git+set-message:*' hooks git-is_clean git-untracked
