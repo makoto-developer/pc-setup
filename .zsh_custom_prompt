@@ -24,7 +24,7 @@ function left-prompt {
 
   dir="${back_color}${path_b}${text_color}${path_t}"
   #echo "%m${back_color}${path_b}${text_color}${name_b}${sharp} ${dir}%~${reset}${text_color}${path_b}${sharp}${reset}${text_color}${arrow} ${reset}"
-  echo "${back_color}${path_b}${text_color}${name_b} ${dir}%~${reset}${text_color}${path_b}${sharp}${reset}${text_color} ${reset}"
+  echo "${back_color}${path_b}${text_color}${name_b}${dir}%~${reset}${text_color}${path_b}${sharp}${reset}${text_color} ${reset}"
 }
 
 
@@ -80,11 +80,12 @@ function rprompt-git-current-branch {
   # ブランチ名を色付きで表示する
   #echo "${branch_status}$branch_name${reset}"
   local branch="${branch_status}$branch_name${reset}"
-  echo " ${back_color}${path_b}${text_color}${name_b} ${dir}${branch}${reset}${text_color}${path_b} ${sharp}${reset}${text_color} ${reset}"
+  #echo " ${back_color}${path_b}${text_color}${name_b} ${dir}${branch}${reset}${text_color}${path_b} ${sharp}${reset}${text_color} ${reset}"
+  echo "${branch}${reset}${text_color}${path_b} ${sharp}${reset}"
 }
 
 
-PROMPT='`left-prompt``rprompt-git-current-branch` '
+PROMPT='`left-prompt` `rprompt-git-current-branch` '
 
 
 #zstyle ':vcs_info:git+set-message:*' hooks git-is_clean git-untracked
