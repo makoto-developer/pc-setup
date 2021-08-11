@@ -381,7 +381,7 @@ defaults delete -g KeyRepeat
 
 ### インストールするアプリ
 
-- toolbox -> 前夫管理
+- toolbox -> 全部管理
 - idea -> テキスト or その他
 - rubymine -> Ruby Elixir Phoenix
 - phpstorm -> PHP 
@@ -457,9 +457,18 @@ Editor -> General -> limits
 ### 6. markdownのプレビューが自動で表示されないように修正する
 
 
+### 7. vimideaの設定をコピる
+
+cp ~/.vimrc ~/.ideavimrc
+
 language Framwork > Default Layout 
 
 Editor onlyに変更
+
+### 7. 差分表示は左右比較をデフォルトにする
+
+TODO
+
 
 ## プロンプトのカスタマイズ
 
