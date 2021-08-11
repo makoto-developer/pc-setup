@@ -85,7 +85,9 @@ alias glg='git log --abbrev-commit --no-merges --date=short --date=iso --grep'
 alias glc='git log --abbrev-commit --no-merges --date=short --date=iso origin/html..html'
 
 
+# twty
 
+alias twff='twty -ff ~/twitter.txt'
 
 # 移動
 alias ..='cd ..'
