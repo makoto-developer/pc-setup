@@ -12,20 +12,33 @@ export HISTFILE=${HOME}/.zsh_history
 export HISTSIZE=1000
 ## 履歴ファイルに保存される履歴の件数
 export SAVEHIST=100000
-# 同時に起動したzshの間でヒストリを共有
+## 同時に起動したzshの間でヒストリを共有
 setopt share_history
-# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+## ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
 setopt auto_param_slash
-# ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
+## ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
 setopt mark_dirs
-# コマンドラインでも # 以降をコメントと見なす
+## コマンドラインでも # 以降をコメントと見なす
 setopt interactive_comments 
-# コマンドを途中まで入力後、historyから絞り込み
+## コマンドを途中まで入力後、historyから絞り込み
 autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
 bindkey "^N" history-beginning-search-forward-end
+## zshの補完機能を有効にする
+autoload -Uz compinit
+compinit -u
+if [ -e /usr/local/share/zsh-completions ]; then
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+### zsh補完で小文字でも大文字にマッチさせる
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+### zsh補完候補を詰めて表示
+setopt list_packed
+### zsh補完候補一覧をカラー表示
+autoload colors
+zstyle ':completion:*' list-colors ''
 
 
 # iterm設定
@@ -34,7 +47,6 @@ export TERM=xterm-256color
 export LSCOLORS="GxFxCxDxBxegedabagaced"
 export LS_COLORS='di=33;:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
 export GREP_COLOR='1;33'
-
 
 
 # ショートカット
@@ -125,7 +137,7 @@ functio tabn() {
   echo -ne "\e]1;$1 $2 $3 $4 $5 $6 $7 $8 $9 \a"
 }
 
-## itermのタブの色を変更する
+## itermのタブのカラーを変更する
 function tab-color() {
   echo -ne "\033]6;1;bg;red;brightness;$1\a"
   echo -ne "\033]6;1;bg;green;brightness;$2\a"
@@ -146,26 +158,9 @@ alias b_prod='echo -ne "\033]1337;SetColors=bg=330000\a"'
 alias b_stg='echo -ne "\033]1337;SetColors=bg=003366\a"'
 
 ## itermのプロファイルを切り替えるコマンド
-
+## chpf home/chpf officeのように使う
 alias chpf='(){echo -e "\033]1337;SetProfile=$1\a"}'
 
-
-## zshの補完機能を有効にする
-autoload -Uz compinit
-compinit -u
-if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-
-### zsh補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-### zsh補完候補を詰めて表示
-setopt list_packed
-
-### zsh補完候補一覧をカラー表示
-autoload colors
-zstyle ':completion:*' list-colors ''
 
 ### プロンプトの見た目をカスタマイズ
 source ~/.zsh_custom_prompt
