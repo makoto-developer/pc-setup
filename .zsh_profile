@@ -61,6 +61,11 @@ alias gp="grep --color=auto"
 alias tw="twty"
 alias grep='grep --color=auto'
 
+# zsh系
+alias rezsh="source ~/.zshrc"
+alias vzshp="vim ~/.zsh_profile"
+alias vzshc="vim ~/.zsh_custom_prompt"
+
 # ls系
 alias l='ls -ltrG'
 alias ll="ls -la"
@@ -83,11 +88,17 @@ alias gd="git diff"
 alias glg='git log --abbrev-commit --no-merges --date=short --date=iso --grep'
 # ローカルコミットを表示
 alias glc='git log --abbrev-commit --no-merges --date=short --date=iso origin/html..html'
+# 派生元のブランチを表示
+alias gbor="git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'[]~^[]' '{print $2}'"
 
 
 # twty
-
+## ファイルに書き込んで送信
 alias twff='twty -ff ~/twitter.txt'
+alias twv='vi ~/twitter.txt'
+## バイト数を計算する方法
+# コマンドにしないけど、vimを開いた状態でg -> ctrl gを押すと下のステータスにバイト数が表示される
+
 
 # 移動
 alias ..='cd ..'
