@@ -88,7 +88,7 @@ alias g="git"
 alias ga="git add -A"
 alias gb="git branch"
 alias gs="git status --short --branch"
-alias gc="git commit -m"
+alias gc="git commit -m $@"
 alias gp="git pull"
 alias gf="git fetch"
 alias gfp="git fetch -p"
@@ -96,11 +96,11 @@ alias gh="git push"
 alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gd="git diff"
-# grep
+## grep
 alias glg='git log --abbrev-commit --no-merges --date=short --date=iso --grep'
-# ローカルコミットを表示
+## ローカルコミットを表示
 alias glc='git log --abbrev-commit --no-merges --date=short --date=iso origin/html..html'
-# 派生元のブランチを表示
+## 派生元のブランチを表示
 alias gbor="git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'[]~^[]' '{print $2}'"
 
 
