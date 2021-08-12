@@ -501,6 +501,25 @@ brew install zsh-completions
 cp /usr/local/Cellar/git/2.32.0_1/etc/bash_completion.d/git-completion.bash ~/.git-completion.bash
 ```
 
+### 5-4 promptの表示を変更
+
+参考URL: https://dev.classmethod.jp/articles/zsh-prezto/
+
+```zsh
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+
+# 必要な場合のみ
+mkdir zsh_orig
+mv .zshrc .zsh_custom_prompt zsh_orig
+```
+
+```zsh
+setopt EXTENDED_GLOB
+for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+done
+```
+
 
 ### OnyX Macの無駄な設定を根こそぎオフ
 
