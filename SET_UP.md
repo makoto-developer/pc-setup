@@ -31,6 +31,13 @@ https://iterm2.com/downloads.html
 #eval "$(/opt/homebrew/bin/brew shellenv)" # この作業は最近必要なくなったらしい
 ```
 
+## ディレクトリを作成しておく
+
+```shell
+mkdir ~/work
+mkdir ~/opt
+```
+
 ## ツールをインストール(必要ないやつ入れない)
 
 **ツールインストールの大原則**
@@ -302,7 +309,6 @@ asdf plugin-add yarn
 asdf plugin-add rust
 asdf plugin-add zig
 asdf plugin-add clojure
-
 ```
 
 ### Elixirをインストール
@@ -497,3 +503,10 @@ docker stop start-nginx
 カフェとかで画面見られたときに恥ずかしい(セキュリティ的にもアウトか)のでcliで投稿できるようにしたいので導入
 
 [how_to_use_twty.md](./how_to_use_twty.md)
+
+## golang インストール
+
+```shell
+# TODO 記載する
+
+```
