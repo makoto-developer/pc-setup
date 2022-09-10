@@ -49,7 +49,10 @@ brew install --cask kindle
 brew install --cask discord
 brew install --cask karabiner-elements
 brew install --cask figma
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6d548ee (twtyのインストールを追加)
 brew install --cask slack
 brew install twty
 
