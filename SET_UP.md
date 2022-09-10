@@ -36,6 +36,7 @@ https://iterm2.com/downloads.html
 **ツールインストールの大原則**
 - プログラミング言語 -> asdf
 - cliやツール類 -> brew
+
 迷ったら自動でバージョンアップしても問題ないものはbrew。それ以外はasdfを使う(ケースによってバージョンの切り替えが必要の場合のみ)。
 
 
@@ -49,10 +50,6 @@ brew install --cask kindle
 brew install --cask discord
 brew install --cask karabiner-elements
 brew install --cask figma
-<<<<<<< HEAD
-
-=======
->>>>>>> 6d548ee (twtyのインストールを追加)
 brew install --cask slack
 brew install twty
 
