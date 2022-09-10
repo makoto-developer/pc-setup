@@ -12,7 +12,7 @@ google ime
 ## Apple Storeからインストール
 
 ```
-line
+Line App
 XCode
 ```
 
@@ -33,6 +33,11 @@ https://iterm2.com/downloads.html
 
 ## ツールをインストール(必要ないやつ入れない)
 
+**ツールインストールの大原則**
+- プログラミング言語 -> asdf
+- cliやツール類 -> brew
+迷ったら自動でバージョンアップしても問題ないものはbrew。それ以外はasdfを使う(ケースによってバージョンの切り替えが必要の場合のみ)。
+
 各ホームページでインストール方法を確認
 
 ```
@@ -42,7 +47,14 @@ brew install --cask rectangle
 brew install --cask notion
 brew install --cask kindle
 brew install --cask discord
+brew install --cask karabiner-elements
+brew install --cask figma
+
+
+# 一括
+brew install --cask clipy alt-tab rectangle notion kindle discord karabiner-elements
 ```
+
 [clipy](https://formulae.brew.sh/cask/clipy)
 [alttab](https://alt-tab-macos.netlify.app/)
 [rectangle](https://github.com/rxhanson/Rectangle)
@@ -276,6 +288,7 @@ asdfのパスを通す
 プラグインを入れる(使いそうにないやつは削除)
 
 ```zsh
+asdf plugin-add haskell
 asdf plugin-add erlang
 asdf plugin-add elixir
 asdf plugin-add nodejs
@@ -284,12 +297,9 @@ asdf plugin-add golang
 asdf plugin-add golangci-lint
 asdf plugin-add kubectl
 asdf plugin-add yarn
-asdf plugin-add haskell
 asdf plugin-add rust
 asdf plugin-add zig
 asdf plugin-add clojure
-asdf plugin-add awscli
-asdf plugin-add aws-sam-cli
 
 ```
 
@@ -430,3 +440,52 @@ asdf local nodejs 16.13.2
 書いていく
 ```
 
+
+## docker + lima環境構築
+
+(参考リンク)[https://qiita.com/mykysyk@github/items/26926aa98c1591b2f1ed]
+```shell
+brew install lima docker docker-compose
+cd ~
+mkdir -p ~/.docker/cli-plugins
+ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+
+
+# docker-composeが実行できることを確認(空打ち)
+docker-compose
+
+# limactlが実行できることを確認
+limactl -v
+
+# limaの公式からdockerイメージをダウンロード
+LIMA_VERSION=`limactl -v | awk '{print $3}'`
+curl -o docker.yaml https://raw.githubusercontent.com/lima-vm/lima/v${LIMA_VERSION}/examples/docker.yaml
+
+# dockerを起動
+limactl start ./docker.yaml
+
+## 初回尋ねられるので Proceed with the default configuration を選択
+## ? Creating an instance "default"  [Use arrows to move, type to filter]
+## > Proceed with the default configuration
+## Open an editor to override the configuration
+
+# zshrcにDockerHostを追加
+echo 'export DOCKER_HOST=unix://$HOME/.lima/docker/sock/docker.sock' >> ~/.zshrc
+source  ~/.zshrc
+
+# dockerの疎通ができることを確認
+docker ps --all
+
+# お試しでNginxが起動できるかどうかを確認
+docker pull nginx
+docker run --name start-nginx -d -p 8080:80 nginx
+docker ps -a
+
+```
+[localhost:8080]()を開いてNginxが動いていることを確認
+
+確認が終わったら終了する
+
+```shell
+docker stop start-nginx
+```
