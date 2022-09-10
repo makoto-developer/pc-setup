@@ -38,8 +38,8 @@ https://iterm2.com/downloads.html
 - cliやツール類 -> brew
 迷ったら自動でバージョンアップしても問題ないものはbrew。それ以外はasdfを使う(ケースによってバージョンの切り替えが必要の場合のみ)。
 
-各ホームページでインストール方法を確認
 
+必要なツールをインストール(不要なものは削除してOK)
 ```
 brew install --cask clipy
 brew install --cask alt-tab
@@ -50,9 +50,11 @@ brew install --cask discord
 brew install --cask karabiner-elements
 brew install --cask figma
 
+brew install --cask slack
+brew install twty
 
 # 一括
-brew install --cask clipy alt-tab rectangle notion kindle discord karabiner-elements
+brew install --cask clipy alt-tab rectangle notion kindle discord karabiner-elements figma slack twty
 ```
 
 [clipy](https://formulae.brew.sh/cask/clipy)
@@ -482,10 +484,16 @@ docker run --name start-nginx -d -p 8080:80 nginx
 docker ps -a
 
 ```
-[localhost:8080]()を開いてNginxが動いていることを確認
+[localhost:8080](http://localhost:8080)を開いてNginxが動いていることを確認
 
 確認が終わったら終了する
 
 ```shell
 docker stop start-nginx
 ```
+
+## twtyの使い方(twitterのcli版)
+
+カフェとかで画面見られたときに恥ずかしい(セキュリティ的にもアウトか)のでcliで投稿できるようにしたいので導入
+
+[how_to_use_twty.md](./how_to_use_twty.md)
