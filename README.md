@@ -16,11 +16,7 @@
 ## PCの運用
 
 [運用](./OPERATION.md)
-<<<<<<< HEAD
-=======
-
 ## twtyの使い方メモ
 
 [twtyの使い方](./how_to_use_twty.md)
->>>>>>> 4453b8c (update)
 
