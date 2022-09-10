@@ -138,7 +138,7 @@ Host github.com
 ssh -T git@github.com
 
 # パスフレーズの入力を省略
-ssh-add id_github
+ssh-add ~/.ssh/id_github
 
 # 登録できたか確認
 ssh-add -l
