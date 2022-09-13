@@ -12,14 +12,11 @@ https://iterm2.com/
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# 後で.zsh_profileにパスを追加 
-#eval "$(/opt/homebrew/bin/brew shellenv)" # この作業は最近必要なくなったらしい
 ```
 
 ## 必須ツール
 
-### brewからインストール
+### brewでインストール
 
 ```shell
 brew install --cask google-chrome
@@ -46,15 +43,10 @@ mkdir ~/work
 mkdir ~/opt
 ```
 
-## ツールをインストール(必要ないやつ入れない)
-
-**ツールインストールの大原則**
-- プログラミング言語 -> asdf
-- cliやツール類 -> brew
-
-迷ったら自動でバージョンアップしても問題ないものはbrew。それ以外はasdfを使う(ケースによってバージョンの切り替えが必要の場合のみ)。
+## 必要なツールをインストール
 
 **必要なツールをインストール**
+
 ```
 brew install --cask clipy
 brew install --cask alt-tab
@@ -66,18 +58,11 @@ brew install --cask karabiner-elements
 brew install --cask figma
 brew install --cask slack
 brew install --cask jetbrains-toolbox
-
-# 一括
-brew install --cask clipy alt-tab rectangle notion kindle discord karabiner-elements figma slack jetbrains-toolbox
 ```
-
-[clipy](https://formulae.brew.sh/cask/clipy)
-[alttab](https://alt-tab-macos.netlify.app/)
-[rectangle](https://github.com/rxhanson/Rectangle)
 
 ## 開発用のフォントをインストール
 
-[こちら](https://github.com/yuru7/HackGen)
+[こちら](https://github.com/yuru7/HackGen)を参照
 
 ```
 brew tap homebrew/cask-fonts
@@ -86,9 +71,9 @@ brew install font-hackgen-nerd
 ```
 
 
-## power font(preztoのテーマの設定で必要になる)
+## power font(preztoのテーマの設定で必要になる)をインストール
 
-[公式に書いてある通り](https://github.com/powerline/fonts)インストール
+[公式](https://github.com/powerline/fonts)を参考にインストール
 
 ```
 git clone https://github.com/powerline/fonts.git --depth=1
@@ -112,9 +97,10 @@ brew install git
 ## sshを設定
 
 ```
+$ cd ~
 $ mkdir .ssh
 $ cd $_
-$ ssh-keygen -t ed25519 -C "your email"
+$ ssh-keygen -t ed25519 -C "<<<your email>>>"
 
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (/Users/user/.ssh/id_ed25519): id_github <<<githubを例に。ドメインごとにsshkeyを作成する。流用しない。>>>
@@ -164,13 +150,6 @@ ssh-add -l
 git clone git@github.com:makoto-developer/dotfiles.git
 ```
 
-
-## workディレクトリの作成
-
-```zsh
-#mkdir 会社名
-mkdir work
-```
 
 # 設定編
 
