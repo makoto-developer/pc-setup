@@ -1,34 +1,42 @@
 # 開発環境構築
 
-## 必須ツール
-Googleで検索
-
-```
-chrome
-カスペルスキー(会社で指定されていなかったら入れておく)
-google ime
-```
-
-## Apple Storeからインストール
-
-```
-Line App
-XCode
-```
-
 ## iterm2をインストール
-```
-https://iterm2.com/downloads.html
-```
-[iterm2](https://iterm2.com/)
+
+[ここ](https://iterm2.com/)からitem2をインストール
+
+https://iterm2.com/
 
 ## [brew](https://brew.sh/index_ja)をインストール
+
+コマンドを実行する
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # 後で.zsh_profileにパスを追加 
 #eval "$(/opt/homebrew/bin/brew shellenv)" # この作業は最近必要なくなったらしい
+```
+
+## 必須ツール
+
+### brewからインストール
+
+```shell
+brew install --cask google-chrome
+brew install --cask google-japanese-ime
+```
+
+### Googleで検索してインストール
+
+```
+カスペルスキー(会社で指定されていなかったら入れておく)
+```
+
+### Apple Storeからインストール
+
+```
+Line App
+XCode
 ```
 
 ## ディレクトリを作成しておく
@@ -46,8 +54,7 @@ mkdir ~/opt
 
 迷ったら自動でバージョンアップしても問題ないものはbrew。それ以外はasdfを使う(ケースによってバージョンの切り替えが必要の場合のみ)。
 
-
-必要なツールをインストール(不要なものは削除してOK)
+**必要なツールをインストール**
 ```
 brew install --cask clipy
 brew install --cask alt-tab
@@ -58,10 +65,10 @@ brew install --cask discord
 brew install --cask karabiner-elements
 brew install --cask figma
 brew install --cask slack
-brew install twty
+brew install --cask jetbrains-toolbox
 
 # 一括
-brew install --cask clipy alt-tab rectangle notion kindle discord karabiner-elements figma slack twty
+brew install --cask clipy alt-tab rectangle notion kindle discord karabiner-elements figma slack jetbrains-toolbox
 ```
 
 [clipy](https://formulae.brew.sh/cask/clipy)
@@ -145,7 +152,7 @@ Host github.com
 ssh -T git@github.com
 
 # パスフレーズの入力を省略
-ssh-add ~/.ssh/id_github
+ssh-add -K ~/.ssh/id_github
 
 # 登録できたか確認
 ssh-add -l
@@ -498,9 +505,13 @@ docker ps -a
 docker stop start-nginx
 ```
 
-## twtyの使い方(twitterのcli版)
+## twty
 
-カフェとかで画面見られたときに恥ずかしい(セキュリティ的にもアウトか)のでcliで投稿できるようにしたいので導入
+カフェとかで画面見られたときに恥ずかしい(セキュリティ的にもアウトか)のでcliで投稿できるようにしたいため導入
+
+```shell
+brew install twty
+```
 
 [how_to_use_twty.md](./how_to_use_twty.md)
 
@@ -509,4 +520,14 @@ docker stop start-nginx
 ```shell
 # TODO 記載する
 
+cd 
+
+```
+
+
+## npmで入れておくもの
+
+```shell
+node -v
+npm i -i yarn
 ```
