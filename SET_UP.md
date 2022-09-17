@@ -1,4 +1,10 @@
-# 開発環境構築
+# macOS開発環境構築
+
+## 将来的に実現したいこと
+- terraformで全自動で環境構築できるようにしたい
+
+## 前提
+- 基本的にアプリインストールは`brew cask`でインストールする
 
 ## iterm2をインストール
 
@@ -10,7 +16,7 @@ https://iterm2.com/
 
 コマンドを実行する
 
-```
+```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
@@ -25,13 +31,13 @@ brew install --cask google-japanese-ime
 
 ### Googleで検索してインストール
 
-```
+```text
 カスペルスキー(会社で指定されていなかったら入れておく)
 ```
 
 ### Apple Storeからインストール
 
-```
+```text
 Line App
 XCode
 ```
@@ -47,7 +53,8 @@ mkdir ~/opt
 
 **必要なツールをインストール**
 
-```
+```shell
+# caskでインストール可能なappの一覧はこちら -> https://github.com/Homebrew/homebrew-cask/tree/master/Casks
 brew install --cask clipy
 brew install --cask alt-tab
 brew install --cask rectangle
@@ -58,6 +65,12 @@ brew install --cask karabiner-elements
 brew install --cask figma
 brew install --cask slack
 brew install --cask jetbrains-toolbox
+```
+
+```shell
+# cask-driverでインストール可能なappの一覧はここから -> https://github.com/Homebrew/homebrew-cask-drivers/tree/master/Casks
+brew tap homebrew/cask-drivers
+brew install zsa-wally
 ```
 
 ## 開発用のフォントをインストール
@@ -75,7 +88,7 @@ brew install font-hackgen-nerd
 
 [公式](https://github.com/powerline/fonts)を参考にインストール
 
-```
+```sehll
 git clone https://github.com/powerline/fonts.git --depth=1
 
 cd fonts
@@ -90,13 +103,13 @@ rm -rf fonts
 
 [こちらを参考に](https://qiita.com/normalsalt/items/f200ba50363ebfd46df0)
 
-```
+```shell
 brew install git
 ```
 
 ## sshを設定
 
-```
+```shell
 $ cd ~
 $ mkdir .ssh
 $ cd $_
@@ -146,7 +159,7 @@ ssh-add -l
 
 ## dotfilesを取得して、READMEに従って設定する
 
-```
+```shell
 git clone git@github.com:makoto-developer/dotfiles.git
 ```
 
@@ -157,13 +170,13 @@ git clone git@github.com:makoto-developer/dotfiles.git
 
 itermのprofileから↓のパスの設定ファイルをimportする
 
-```
+```shell
 ~/dotfiles/iterm/
 ```
 
 ## `cmd + enter`で最大化しないようにする
 
-```
+```text
 Keys -> Key Bindings -> +ボタン -> 'CMD + ENTER' is disabled`
 ```
 
@@ -173,7 +186,7 @@ Keys -> Key Bindings -> +ボタン -> 'CMD + ENTER' is disabled`
 
 ## キーリピート設定変更
 
-```
+```shell
 defaults write -g InitialKeyRepeat -int 11
 defaults write -g KeyRepeat -int 1
 # 緊急時、元に戻すコマンド
@@ -189,13 +202,13 @@ defaults delete -g KeyRepeat
 
 preztoをインストール
 
-```
+```shell
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 ```
 
 インストールが終わったら↓のコマンドを実行
 
-```
+```shell
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
@@ -204,20 +217,20 @@ done
 
 preztoのシンボリックをバックアップ(削除でもOK)
 
-```
+```shell
 mv .zshrc .zshrc_zprezto_original
 ```
 
 dotfilesのシンボリックを貼り直す
 
-```
+```shell
 ln -s dotfiles/zsh/zshrc ~/.zshrc
 ln -s dotfiles/zsh/.zsh_profile ~/.zsh_profile
 ```
 
 [ここを参照](https://github.com/sorin-ionescu/prezto/tree/master/modules)して必要なテーマを入れる
 
-```
+```shell
 vi .zpreztorc
 
 # 30行目あたりに以下を追加
@@ -233,7 +246,7 @@ vi .zpreztorc
 
 エディタをvimに変更する
 
-```
+```shell
 vi ~/.zprofile
 
 #
@@ -247,8 +260,7 @@ export PAGER='less'
 
 preztoのテーマを変更する
 
-
-```
+```shell
 vi .zpreztorc
 
 #  128行目辺り
@@ -256,7 +268,7 @@ vi .zpreztorc
 zstyle ':prezto:module:prompt' theme 'agnoster'
 ```
 
-```
+```shell
 mv ~/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme ~/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme-original
 ln -s ~/dotfiles/zsh/agnoster.zsh-theme  ~/.zprezto/modules/prompt/external/agnoster/
 ```
@@ -268,21 +280,21 @@ ln -s ~/dotfiles/zsh/agnoster.zsh-theme  ~/.zprezto/modules/prompt/external/agno
 
 macOS -> Homebrew 経由でインストール
 
-```
+```shell
 sudo xcodebuild -license accept
 brew install asdf
 ```
 
 asdfのパスを通す
 
-```
+```shell
 . $(brew --prefix asdf)/asdf.sh
 . $(brew --prefix asdf)/libexec/asdf.sh
 ```
 
 プラグインを入れる(使いそうにないやつは削除)
 
-```zsh
+```shell
 asdf plugin-add haskell
 asdf plugin-add erlang
 asdf plugin-add elixir
@@ -301,31 +313,31 @@ asdf plugin-add clojure
 
 Elixirのバージョンを確認
 
-```
+```shell
 asdf list-all elixir
 ```
 
 最新のElixirを入れる
 
-```zsh
+```shell
 asdf install elixir 1.13.2-otp-24
 ```
 
 インストールしたのElixirのバージョンを確認
 
-```zsh
+```shell
 asdf list elixir
 ```
 
 Elixirを使えるようにする
 
-```zsh
+```shell
 asdf global elixir 1.13.2-otp-24
 ```
 
 プロジェクトごとに固定にする場合はlocalを使う
 
-```zsh
+```shell
 asdf local elixir 1.13.2-otp-24
 ```
 
@@ -333,31 +345,31 @@ asdf local elixir 1.13.2-otp-24
 
 elixirと同じく、インストール可能なElixirバージョンを確認
 
-```zsh
+```shell
 asdf list-all erlang
 ```
 
 最新のErlangを入れる
 
-```zsh
+```shell
 asdf install erlang 24.2.1
 ```
 
 インストール済みのErlangのバージョンを確認
 
-```zsh
+```shell
 asdf list erlang
 ```
 
 Erlangを使えるようにする
 
-```zsh
+```shell
 asdf global erlang 24.2.1
 ```
 
 プロジェクトごとに固定にする場合はlocalを使う
 
-```zsh
+```shell
 asdf local erlang 24.2.1
 ```
 
@@ -365,7 +377,7 @@ asdf local erlang 24.2.1
 
 以下のコマンドが使えるかチェック
 
-```zsh
+```shell
 iex
 erl
 mix
@@ -373,7 +385,7 @@ mix
 
 ### Phoenixインストール
 
-```zsh
+```shell
 mix archive.install hex phx_new
 ```
 
@@ -389,13 +401,13 @@ ln -s ~/dotfiles/vim/.vimrc ~/.ideavimrc
 
 ###  インストール可能なバージョンを確認
 
-```zsh
+```shell
 asdf list-all nodejs
 ```
 
 ### nodejsをインストール
 
-```zsh
+```shell
 asdf install nodejs 16.13.2
 ```
 
@@ -403,13 +415,13 @@ asdf install nodejs 16.13.2
 
 グローバルで固定にするとき
 
-```zsh
+```shell
 asdf global nodejs 16.13.2
 ```
 
 プロジェクトごとに固定化するとき
 
-```zsh
+```shell
 asdf local nodejs 16.13.2
 ```
 
@@ -417,23 +429,13 @@ asdf local nodejs 16.13.2
 
 必要に応じて入れる
 
-- Wally(Ergodoxのconfiguration)
 - office excel powerpoint
-- docker
-- notion
 
 # chromeの拡張で入れているもの
 - Octotree GitHub code tree (githubにtree形式でフォルダ構造がみえるようにする)
 - vimium (vimライクにchromeの移動が可能
 - ColorPick Eyedropper (画面のドットの色を抽出)
 - Fonts Ninja (画面で見えているフォントを調べる)
-
-## dockerが有料化した問題への暫定対処方法
-
-```
-書いていく
-```
-
 
 ## docker + lima環境構築
 
@@ -474,8 +476,8 @@ docker ps --all
 docker pull nginx
 docker run --name start-nginx -d -p 8080:80 nginx
 docker ps -a
-
 ```
+
 [localhost:8080](http://localhost:8080)を開いてNginxが動いていることを確認
 
 確認が終わったら終了する
@@ -498,9 +500,11 @@ brew install twty
 
 ```shell
 # TODO 記載する
+asdf plugin add golang
+asdf install golang 1.9
+asdf global golang 1.9
 
-cd 
-
+# 環境変数を設定
 ```
 
 
