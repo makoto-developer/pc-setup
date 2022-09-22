@@ -89,6 +89,7 @@ brew install --cask microsoft-powerpoint
 brew install --cask microsoft-remote-desktop
 brew install --cask microsoft-teams
 brew install --cask microsoft-word
+brew install --cask android-file-transfer
 
 # aws
 brew install --cask dynamodb-local
