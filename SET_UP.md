@@ -1,9 +1,11 @@
 # macOS開発環境構築
 
 ## 将来的に実現したいこと
+
 - terraformで全自動で環境構築できるようにしたい
 
 ## 前提
+
 - 基本的にアプリインストールは`brew cask`でインストールする
 
 ## iterm2をインストール
@@ -45,13 +47,14 @@ XCode
 ## ディレクトリを作成しておく
 
 ```shell
-mkdir ~/work
-mkdir ~/opt
+mkdir ~/work ~/opt
 ```
 
 ## 必要なツールをインストール
 
-**必要なツールをインストール**
+**cask**
+
+その1 よく使うツール
 
 ```shell
 # caskでインストール可能なappの一覧はこちら -> https://github.com/Homebrew/homebrew-cask/tree/master/Casks
@@ -65,12 +68,79 @@ brew install --cask karabiner-elements
 brew install --cask figma
 brew install --cask slack
 brew install --cask jetbrains-toolbox
+brew install --cask ngrok
 ```
+
+その2 必要であれば入れるツール
+
+```shell
+brew install --cask skype
+brew install --cask zoom
+brew install --cask visual-studio-code
+brew install --cask wireshark
+brew install --cask chromium
+
+# office series
+brew install --cask microsoft-excel
+brew install --cask microsoft-office
+brew install --cask microsoft-openjdk
+brew install --cask microsoft-outlook
+brew install --cask microsoft-powerpoint
+brew install --cask microsoft-remote-desktop
+brew install --cask microsoft-teams
+brew install --cask microsoft-word
+
+# aws
+brew install --cask dynamodb-local
+brew install --cask aws-vault
+```
+
+**cask以外 - homebrew/cask-drivers**
 
 ```shell
 # cask-driverでインストール可能なappの一覧はここから -> https://github.com/Homebrew/homebrew-cask-drivers/tree/master/Casks
 brew tap homebrew/cask-drivers
 brew install zsa-wally
+brew install localstack
+```
+
+**cask以外**
+
+```shell
+# other
+brew install jq
+
+# kubernetes
+brew install kubectx
+brew install kubernetes-cli
+brew install helm
+
+# aws
+brew install saml2aws
+brew install kube-aws
+brew install aws-apigateway-importer
+brew install aws-auth
+brew install aws-cdk
+brew install aws-cfn-tools
+brew install aws-console
+brew install aws-elasticbeanstalk
+brew install aws-es-proxy
+brew install aws-google-auth
+brew install aws-iam-authenticator
+brew install aws-keychain
+brew install aws-nuke
+brew install aws-okta
+brew install aws-rotate-key
+brew install aws-sdk-cpp
+brew install aws-shell
+brew install aws-sso-util
+brew install aws-vault
+brew install aws2-wrap
+brew install awscli
+brew install awscli@1
+brew install awscurl
+brew install awslogs
+brew install awsume
 ```
 
 ## 開発用のフォントをインストール
@@ -124,9 +194,9 @@ Your public key has been saved in id_github.pub
 The key fingerprint is:
 The key's randomart image is:
 +--[ED25519 256]--+
-|  oooooo         |
-|  oooooo         |
-|  oooooo         |
+|                 |
+|                 |
+|                 |
 |                 |
 |                 |
 |                 |
@@ -181,8 +251,8 @@ Keys -> Key Bindings -> +ボタン -> 'CMD + ENTER' is disabled`
 ```
 
 ## キーボード設定
-<img width="630" alt="image" src="https://user-images.githubusercontent.com/72484465/182054276-ca00b1e0-840e-4bc8-9205-e2e09a0aab18.png">
 
+<img width="630" alt="image" src="https://user-images.githubusercontent.com/72484465/182054276-ca00b1e0-840e-4bc8-9205-e2e09a0aab18.png">
 
 ## キーリピート設定変更
 
@@ -393,7 +463,7 @@ mix archive.install hex phx_new
 
 jetbrains製品でも同じvimの設定を共有する
 
-```
+```shell
 ln -s ~/dotfiles/vim/.vimrc ~/.ideavimrc
 ```
 
@@ -432,6 +502,7 @@ asdf local nodejs 16.13.2
 - office excel powerpoint
 
 # chromeの拡張で入れているもの
+
 - Octotree GitHub code tree (githubにtree形式でフォルダ構造がみえるようにする)
 - vimium (vimライクにchromeの移動が可能
 - ColorPick Eyedropper (画面のドットの色を抽出)
@@ -440,6 +511,7 @@ asdf local nodejs 16.13.2
 ## docker + lima環境構築
 
 (参考リンク)[https://qiita.com/mykysyk@github/items/26926aa98c1591b2f1ed]
+
 ```shell
 brew install lima docker docker-compose
 cd ~
