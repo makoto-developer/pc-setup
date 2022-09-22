@@ -144,6 +144,24 @@ brew install awslogs
 brew install awsume
 ```
 
+mas
+
+```shell
+# mas-cliをインストール
+brew install mas
+
+# インストール済み
+mas list
+
+# 探す
+mas search <search app name>
+
+# install
+mas install <app id>
+
+mas install 539883307 # LINE
+```
+
 ## 開発用のフォントをインストール
 
 [こちら](https://github.com/yuru7/HackGen)を参照
