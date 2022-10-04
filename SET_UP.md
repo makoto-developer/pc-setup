@@ -52,7 +52,8 @@ mkdir ~/work ~/opt
 
 ## 必要なツールをインストール
 
-**cask**
+GUIアプリ
+
 
 その1 よく使うツール
 
@@ -61,6 +62,7 @@ mkdir ~/work ~/opt
 brew install --cask clipy
 brew install --cask alt-tab
 brew install --cask rectangle
+brew install --cask itsycal
 brew install --cask notion
 brew install --cask kindle
 brew install --cask discord
@@ -91,21 +93,17 @@ brew install --cask microsoft-teams
 brew install --cask microsoft-word
 brew install --cask android-file-transfer
 
-# aws
-brew install --cask dynamodb-local
-brew install --cask aws-vault
 ```
 
-**cask以外 - homebrew/cask-drivers**
+**その他GUI (homebrew/cask-drivers)**
 
 ```shell
 # cask-driverでインストール可能なappの一覧はここから -> https://github.com/Homebrew/homebrew-cask-drivers/tree/master/Casks
 brew tap homebrew/cask-drivers
 brew install zsa-wally
-brew install localstack
 ```
 
-**cask以外**
+**コマンド**
 
 ```shell
 # other
@@ -115,8 +113,18 @@ brew install jq
 brew install kubectx
 brew install kubernetes-cli
 brew install helm
+```
 
-# aws
+**aws**
+```shell
+# cask-drivers
+brew tap homebrew/cask-drivers
+brew install localstack
+
+
+# default
+brew install --cask dynamodb-local
+brew install --cask aws-vault
 brew install saml2aws
 brew install kube-aws
 brew install aws-apigateway-importer
@@ -144,7 +152,7 @@ brew install awslogs
 brew install awsume
 ```
 
-mas
+mas(Apple Store上のアプリをコマンドラインからインストールできる)
 
 ```shell
 # mas-cliをインストール
@@ -173,7 +181,7 @@ brew install font-hackgen-nerd
 ```
 
 
-## power font(preztoのテーマの設定で必要になる)をインストール
+## power fontをインストール(preztoのテーマの設定で必要になるの今のうちに入れる)
 
 [公式](https://github.com/powerline/fonts)を参考にインストール
 
@@ -204,23 +212,23 @@ $ mkdir .ssh
 $ cd $_
 $ ssh-keygen -t ed25519 -C "<<<your email>>>"
 
-Generating public/private ed25519 key pair.
-Enter file in which to save the key (/Users/user/.ssh/id_ed25519): id_github <<<githubを例に。ドメインごとにsshkeyを作成する。流用しない。>>>
-Enter passphrase (empty for no passphrase): <<<パスフレーズを設定(Githubでは設定することを推奨している)>>>
-Enter same passphrase again: <<<パスフレーズを設定(Githubでは設定することを推奨している)>>>
-Your identification has been saved in id_github
-Your public key has been saved in id_github.pub
-The key fingerprint is:
-The key's randomart image is:
-+--[ED25519 256]--+
-|                 |
-|                 |
-|                 |
-|                 |
-|                 |
-|                 |
-|             ..  |
-+----[SHA256]-----+
+# Generating public/private ed25519 key pair.
+# Enter file in which to save the key (/Users/user/.ssh/id_ed25519): id_github <<<githubを例に。ドメインごとにsshkeyを作成する。流用しない。>>>
+# Enter passphrase (empty for no passphrase): <<<パスフレーズを設定(Githubでは設定することを推奨している)>>>
+# Enter same passphrase again: <<<パスフレーズを設定(Githubでは設定することを推奨している)>>>
+# Your identification has been saved in id_github
+# Your public key has been saved in id_github.pub
+# The key fingerprint is:
+# The key's randomart image is:
+# +--[ED25519 256]--+
+# |                 |
+# |                 |
+# |                 |
+# |                 |
+# |                 |
+# |                 |
+# |             ..  |
+# +----[SHA256]-----+
 
 # コピーしてsshキーをgithubに登録
 pbcopy < ~/.ssh/id_github.pub
@@ -403,7 +411,7 @@ asdf plugin-add clojure
 Elixirのバージョンを確認
 
 ```shell
-asdf list-all elixir
+asdf list all elixir
 ```
 
 最新のElixirを入れる
@@ -435,7 +443,7 @@ asdf local elixir 1.13.2-otp-24
 elixirと同じく、インストール可能なElixirバージョンを確認
 
 ```shell
-asdf list-all erlang
+asdf list all erlang
 ```
 
 最新のErlangを入れる
@@ -491,13 +499,14 @@ ln -s ~/dotfiles/vim/.vimrc ~/.ideavimrc
 ###  インストール可能なバージョンを確認
 
 ```shell
-asdf list-all nodejs
+asdf list all nodejs
 ```
 
 ### nodejsをインストール
 
 ```shell
-asdf install nodejs 16.13.2
+set NODE_VERSION=16.17.1
+asdf install nodejs $NODE_VERSION
 ```
 
 ### バージョンを固定化
@@ -505,20 +514,15 @@ asdf install nodejs 16.13.2
 グローバルで固定にするとき
 
 ```shell
-asdf global nodejs 16.13.2
+asdf global nodejs $NODE_VERSION
 ```
 
 プロジェクトごとに固定化するとき
 
 ```shell
-asdf local nodejs 16.13.2
+asdf local nodejs $NODE_VERSION
 ```
 
-## その他ツール
-
-必要に応じて入れる
-
-- office excel powerpoint
 
 # chromeの拡張で入れているもの
 
@@ -526,6 +530,7 @@ asdf local nodejs 16.13.2
 - vimium (vimライクにchromeの移動が可能
 - ColorPick Eyedropper (画面のドットの色を抽出)
 - Fonts Ninja (画面で見えているフォントを調べる)
+
 
 ## docker + lima環境構築
 
@@ -536,7 +541,6 @@ brew install lima docker docker-compose
 cd ~
 mkdir -p ~/.docker/cli-plugins
 ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
-
 
 # docker-composeが実行できることを確認(空打ち)
 docker-compose
@@ -551,7 +555,7 @@ curl -o docker.yaml https://raw.githubusercontent.com/lima-vm/lima/v${LIMA_VERSI
 # dockerを起動
 limactl start ./docker.yaml
 
-## 初回尋ねられるので Proceed with the default configuration を選択
+## 初回尋ねられるので `Proceed with the default configuration`を選択
 ## ? Creating an instance "default"  [Use arrows to move, type to filter]
 ## > Proceed with the default configuration
 ## Open an editor to override the configuration
@@ -563,7 +567,7 @@ source  ~/.zshrc
 # dockerの疎通ができることを確認
 docker ps --all
 
-# お試しでNginxが起動できるかどうかを確認
+# お試しでNginxが起動できるかどうかを確認(やらなくてもいい)
 docker pull nginx
 docker run --name start-nginx -d -p 8080:80 nginx
 docker ps -a
@@ -596,6 +600,7 @@ asdf install golang 1.9
 asdf global golang 1.9
 
 # 環境変数を設定
+## TODO 追記する
 ```
 
 ## npmで入れておくもの
@@ -604,3 +609,62 @@ asdf global golang 1.9
 node -v
 npm i -i yarn
 ```
+
+
+# macOSの設定
+
+- 端末の名前を変更する
+- ファイヤーウォールをONにする
+- マウスカーソルの速度を最大にする
+- トラックパッドの速度を最大にする
+- Caps Lockをctrlに変更する
+- 時間
+  - 秒を表示する
+  - 24時間表示にする
+- メニューバーにバッテリーの残量を表示する
+- メニューバーにボリュームを表示する
+- メニューバーからSpotlightとsiriを削除する
+- siriは無効化する
+- Mission Controlにある使わないアプリはひとつにまとめてどける
+- Dock
+  - Dockを自動で表示する
+  - 不要なアプリをDockから削除する
+  - 最近使ったアプリを表示しない
+  - 位置を左側に変更する
+  - すケースエフェクトでウィンドウをしまう
+- スクリーンショットの保存先を変更する
+
+↓のコマンドを実行する
+
+```shell
+defaults write com.apple.screencapture location ~/Screenshot/;killall SystemUIServer
+```
+
+- Finder
+  - 左ナビバーにホームディレクトリを追加
+  - Air Dropを削除
+  - 不要なディレクトリを削除
+  - 拡張子を表示する
+  - 隠しファイル/ディレクトリを表示する(`cmd + shift + .`)
+- ホットコーナーを無効化する
+- スクリーンショット撮影後にサムネイルを表示しない
+
+`cmd + shift + 5`でスクリーンショットを出す。オプションを選択して「フローティングサムネールを表示」をクリックしてオフにする
+
+- スクリーンショットの影を消し、ファイルサイズを小さくする
+
+```shell
+defaults write com.apple.screencapture disable-shadow -bool TRUE
+defaults write com.apple.screencapture type JPG
+killall SystemUIServer
+```
+
+
+- spotlight
+  - アプリケーションとシステム環境設定以外はすべて無効化
+  - ショートカットを`ctrl + space`に変更
+- キーボード
+  - 数字の全角入力をオフにする
+  - シングルクォーテーション、ダブルクオーテーションの自動変換をオフにする
+  - スペルの自動変換をオフにする
+  - 
