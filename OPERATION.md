@@ -62,6 +62,12 @@ asdf install <<<library>>> <<<version>>>
 
 ideavimがまだ対応していないケースが多いので確認してからアップデートする。
 
+## pip
+
+```shell
+/Applications/Xcode.app/Contents/Developer/usr/bin/python3 -m pip install --upgrade pip
+```
+
 # ディレクトリ構成
 
 ## ホームディレクトリ

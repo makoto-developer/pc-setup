@@ -668,3 +668,17 @@ killall SystemUIServer
   - シングルクォーテーション、ダブルクオーテーションの自動変換をオフにする
   - スペルの自動変換をオフにする
   - 
+
+
+## vim設定
+
+[dein](https://github.com/Shougo/dein.vim/blob/master/README.md)
+
+```shell
+brew install neovim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+
+python3 -m pip install --user --upgrade pynvim
+
+ln -s ~/dotfiles/vim/nvim ~/.config/nvim
+```
