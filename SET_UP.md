@@ -676,8 +676,12 @@ killall SystemUIServer
 
 ```shell
 brew install neovim
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 
+# この手順は→のURLを参照する https://github.com/Shougo/dein.vim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh ~/.cache/dein
+
+# これはやらなくてもいいかも
 python3 -m pip install --user --upgrade pynvim
 
 ln -s ~/dotfiles/vim/nvim ~/.config/nvim
