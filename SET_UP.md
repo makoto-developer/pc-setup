@@ -108,6 +108,8 @@ brew install zsa-wally
 ```shell
 # other
 brew install jq
+brew install ghq
+brew install peco
 
 # kubernetes
 brew install kubectx
@@ -685,4 +687,12 @@ sh ./installer.sh ~/.cache/dein
 python3 -m pip install --user --upgrade pynvim
 
 ln -s ~/dotfiles/vim/nvim ~/.config/nvim
+```
+
+## gqh
+
+
+```shell
+
+git config --global ghq.root '~/work'
 ```
