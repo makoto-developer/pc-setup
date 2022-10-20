@@ -395,15 +395,15 @@ asdfのパスを通す
 プラグインを入れる(使いそうにないやつは削除)
 
 ```shell
-asdf plugin-add haskell
-asdf plugin-add erlang
-asdf plugin-add elixir
-asdf plugin-add nodejs
-asdf plugin-add golang
-asdf plugin-add rust
-asdf plugin-add zig
-asdf plugin-add clojure
-asdf plugin-add julia
+asdf plugin add haskell
+asdf plugin add erlang
+asdf plugin add elixir
+asdf plugin add nodejs
+asdf plugin add golang
+asdf plugin add rust
+asdf plugin add zig
+asdf plugin add clojure
+asdf plugin add julia
 ```
 
 ### Elixirをインストール
