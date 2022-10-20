@@ -71,6 +71,7 @@ brew install --cask figma
 brew install --cask slack
 brew install --cask jetbrains-toolbox
 brew install --cask ngrok
+brew install fig
 ```
 
 その2 必要であれば入れるツール
@@ -398,14 +399,11 @@ asdf plugin-add haskell
 asdf plugin-add erlang
 asdf plugin-add elixir
 asdf plugin-add nodejs
-asdf plugin add neovim
 asdf plugin-add golang
-asdf plugin-add golangci-lint
-asdf plugin-add kubectl
-asdf plugin-add yarn
 asdf plugin-add rust
 asdf plugin-add zig
 asdf plugin-add clojure
+asdf plugin-add julia
 ```
 
 ### Elixirをインストール
