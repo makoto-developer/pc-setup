@@ -71,7 +71,6 @@ brew install --cask figma
 brew install --cask slack
 brew install --cask jetbrains-toolbox
 brew install --cask ngrok
-brew install fig
 ```
 
 その2 必要であれば入れるツール
@@ -111,6 +110,12 @@ brew install zsa-wally
 brew install jq
 brew install ghq
 brew install peco
+brew install htop
+brew install colordiff
+brew install nkf
+brew install fig
+brew install wget
+brew install tree
 
 # kubernetes
 brew install kubectx
