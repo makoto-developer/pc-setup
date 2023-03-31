@@ -62,14 +62,18 @@ GUIアプリ
 brew install --cask clipy
 brew install --cask alt-tab
 brew install --cask rectangle
+brew install --cask karabiner-elements
+brew install --cask jetbrains-toolbox
+```
+
+
+```shell
 brew install --cask itsycal
 brew install --cask notion
 brew install --cask kindle
 brew install --cask discord
-brew install --cask karabiner-elements
 brew install --cask figma
 brew install --cask slack
-brew install --cask jetbrains-toolbox
 brew install --cask ngrok
 ```
 
@@ -107,6 +111,7 @@ brew install zsa-wally
 
 ```shell
 # other
+brew install gitmoji
 brew install jq
 brew install ghq
 brew install peco
@@ -129,15 +134,14 @@ brew install helm
 brew tap homebrew/cask-drivers
 brew install localstack
 
-
 # default
 brew install --cask dynamodb-local
 brew install --cask aws-vault
+brew install aws-cdk
 brew install saml2aws
 brew install kube-aws
 brew install aws-apigateway-importer
 brew install aws-auth
-brew install aws-cdk
 brew install aws-cfn-tools
 brew install aws-console
 brew install aws-elasticbeanstalk
@@ -184,8 +188,7 @@ mas install 539883307 # LINE
 
 ```
 brew tap homebrew/cask-fonts
-brew install font-hackgen
-brew install font-hackgen-nerd
+brew install font-hackgen  font-hackgen-nerd
 ```
 
 
@@ -297,6 +300,30 @@ defaults write -g KeyRepeat -int 1
 # 緊急時、元に戻すコマンド
 defaults delete -g InitialKeyRepeat
 defaults delete -g KeyRepeat
+```
+
+## fish shell
+
+参考: https://zenn.dev/sawao/articles/0b40e80d151d6a
+
+```shell
+brew install fish
+
+# fishを追加
+sudo vi /etc/shells
+# 最後に追加 /usr/local/bin/fish
+
+# デフォルトのシェルを変更
+chsh -s /usr/local/bin/fish
+
+# パッケージマネージャー
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+
+# 文字化け対策
+fisher install oh-my-fish/theme-bobthefish
+
+# itermのフォントをpowerlineのフォントに変更しておく
+itermを開いて profiles -> text -> font
 ```
 
 ## zshの設定
@@ -539,6 +566,8 @@ asdf local nodejs $NODE_VERSION
 
 ## docker + lima環境構築
 
+brew install docker docker-compose
+
 (参考リンク)[https://qiita.com/mykysyk@github/items/26926aa98c1591b2f1ed]
 
 ```shell
@@ -659,6 +688,7 @@ defaults write com.apple.screencapture location ~/Screenshot/;killall SystemUISe
 - スクリーンショットの影を消し、ファイルサイズを小さくする
 
 ```shell
+defaults write -g ApplePressAndHoldEnabled -bool false
 defaults write com.apple.screencapture disable-shadow -bool TRUE
 defaults write com.apple.screencapture type JPG
 killall SystemUIServer
