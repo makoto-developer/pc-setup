@@ -1,8 +1,8 @@
 # PCセットアップ
 
-## MacOS環境構築
+## macOS環境構築
 
-[MacOS環境構築](./SET_UP.md)
+[macOS環境構築](./SET_UP.md)
 
 ## プロジェクト参画時に確認する項目や手順
 
@@ -14,12 +14,3 @@
 ## macOSの運用
 
 [運用](./OPERATION.md)
-
-## twtyの使い方メモ
-
-[twtyの使い方](./how_to_use_twty.md)
-
-
-
-```javascript'i
-
