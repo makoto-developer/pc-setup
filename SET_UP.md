@@ -726,6 +726,7 @@ ln -s ~/dotfiles/vim/nvim ~/.config/nvim
 
 
 ```shell
-
-git config --global ghq.root '~/work'
+fisher install decors/fish-ghq
+brew install fzf
+git config --global ghq.root '~/src'
 ```
