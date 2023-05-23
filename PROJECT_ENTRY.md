@@ -104,20 +104,25 @@
 ## 自分はそのプロジェクトでどこまでやるのか？
 
 **役割**
-フロントエンド/バックエンド/インフラ/デザイン/マネージメント/...
+- フロントエンド
+- バックエンド
+- インフラ
+- デザイン
+- マネージメント
+- ...
 
 ## タスク管理
-Backlog
-Asana
-Github project
-JIRA
+- Backlog
+- Asana
+- Github project
+- JIRA
 
 ## コミュニケーション
-slack
-discord
+- slack
+- discord
 
 ## 定例
-毎週やっている会議を確認
+- 毎週やっている会議を確認
 
 ## 勤怠連絡
 - リモートワークの報告 
@@ -125,16 +130,16 @@ discord
 - 緊急時の連絡先
 
 ## 工数管理
-タイムシート
+- タイムシート
 
 ## 設計図
-lucid-chart
+- lucid-chart
 
 ## Wiki
-Confluence
-Backlog
+- Confluence
+- Backlog
 
 ## コード管理
-Github
-Gitlab
-code commit
+- Github
+- Gitlab
+- code commit

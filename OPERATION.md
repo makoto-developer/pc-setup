@@ -58,25 +58,20 @@ asdf install <<<library>>> <<<version>>>
 
 何をAcceptしていて、どれをDenyしているかなど月1くらいで確認する。
 
-## Jetbrans
+## Jetbrains
 
 ideavimがまだ対応していないケースが多いので確認してからアップデートする。
-
-## pip
-
-```shell
-/Applications/Xcode.app/Contents/Developer/usr/bin/python3 -m pip install --upgrade pip
-```
 
 # ディレクトリ構成
 
 ## ホームディレクトリ
 
-| directory    | description                           |
-|:-------------|:--------------------------------------|
-| work/github  | githubからクローンしてきたリポジトリはここに置く           |
-| work/gitlab  | gitlabからクローンしてきたリポジトリはここに置く           |
-| work/private | ローカルにしかない作業領域                         |
-| test/        | 一時的にコマンドの出力テストやリポジトリのクローンをしてきたときに使う領域 |
-| opt/         | brewやasdfでも入れられないようなコマンドを入れる場合はこちらにおく |
+| directory     | description                           |
+|:--------------|:--------------------------------------|
+| ~/work/github | githubからクローンしてきたリポジトリはここに置く           |
+| ~/work/gitlab | gitlabからクローンしてきたリポジトリはここに置く           |
+| ~/work/private| ローカルにしかない作業領域                         |
+| ~/test/       | 一時的にコマンドの出力テストやリポジトリのクローンをしてきたときに使う領域 |
+| ~/opt/        | brewやasdfでも入れられないようなコマンドを入れる場合はこちらにおく |
+| ~/tmp/        | brewやasdfでも入れられないようなコマンドを入れる場合はこちらにおく |
 

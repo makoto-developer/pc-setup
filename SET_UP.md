@@ -1,22 +1,14 @@
 # macOS開発環境構築
 
-## 将来的に実現したいこと
-
-- terraformで全自動で環境構築できるようにしたい
-
-## 前提
-
-- 基本的にアプリインストールは`brew cask`でインストールする
-
 ## iterm2をインストール
 
 [ここ](https://iterm2.com/)からitem2をインストール
 
 https://iterm2.com/
 
-## [brew](https://brew.sh/index_ja)をインストール
+※macOS純正のterminalを使うとbrewがうまく機能しない場合があるので`iterm2`を使う
 
-コマンドを実行する
+## [brew](https://brew.sh/index_ja)をインストール
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -47,13 +39,12 @@ XCode
 ## ディレクトリを作成しておく
 
 ```shell
-mkdir ~/work ~/opt
+mkdir -p ~/work/github ~/opt
 ```
 
-## 必要なツールをインストール
+## よく使うツールをインストール
 
-GUIアプリ
-
+**GUIアプリ**
 
 その1 よく使うツール
 
@@ -64,8 +55,11 @@ brew install --cask alt-tab
 brew install --cask rectangle
 brew install --cask karabiner-elements
 brew install --cask jetbrains-toolbox
+brew install --cask visual-studio-code
+brew install --cask chromium
 ```
 
+必要であれば入れるツール1
 
 ```shell
 brew install --cask itsycal
@@ -77,16 +71,17 @@ brew install --cask slack
 brew install --cask ngrok
 ```
 
-その2 必要であれば入れるツール
+必要であれば入れるツール2
 
 ```shell
+# online meeting
 brew install --cask skype
 brew install --cask zoom
-brew install --cask visual-studio-code
-brew install --cask wireshark
-brew install --cask chromium
 
-# office series
+# Network
+brew install --cask wireshark
+
+# office
 brew install --cask microsoft-excel
 brew install --cask microsoft-office
 brew install --cask microsoft-openjdk
@@ -96,49 +91,55 @@ brew install --cask microsoft-remote-desktop
 brew install --cask microsoft-teams
 brew install --cask microsoft-word
 brew install --cask android-file-transfer
-
-```
-
-**その他GUI (homebrew/cask-drivers)**
-
-```shell
-# cask-driverでインストール可能なappの一覧はここから -> https://github.com/Homebrew/homebrew-cask-drivers/tree/master/Casks
-brew tap homebrew/cask-drivers
-brew install zsa-wally
 ```
 
 **コマンド**
+
+よく使うコマンド
+
+```shell
+# other
+brew install gitmoji
+brew install ghq
+brew install fzf
+brew install peco
+```
+
 
 ```shell
 # other
 brew install gitmoji
 brew install jq
-brew install ghq
-brew install peco
 brew install htop
 brew install colordiff
 brew install nkf
 brew install fig
 brew install wget
 brew install tree
+```
 
+kubernetes
+
+```shell
 # kubernetes
 brew install kubectx
 brew install kubernetes-cli
 brew install helm
 ```
 
-**aws**
+aws
+
 ```shell
 # cask-drivers
 brew tap homebrew/cask-drivers
 brew install localstack
 
 # default
-brew install --cask dynamodb-local
-brew install --cask aws-vault
 brew install aws-cdk
 brew install saml2aws
+brew install awscli
+brew install --cask dynamodb-local
+brew install --cask aws-vault
 brew install kube-aws
 brew install aws-apigateway-importer
 brew install aws-auth
@@ -157,7 +158,6 @@ brew install aws-shell
 brew install aws-sso-util
 brew install aws-vault
 brew install aws2-wrap
-brew install awscli
 brew install awscli@1
 brew install awscurl
 brew install awslogs
@@ -191,7 +191,6 @@ brew tap homebrew/cask-fonts
 brew install font-hackgen  font-hackgen-nerd
 ```
 
-
 ## power fontをインストール(preztoのテーマの設定で必要になるの今のうちに入れる)
 
 [公式](https://github.com/powerline/fonts)を参考にインストール
@@ -205,7 +204,6 @@ cd fonts
 cd ..
 rm -rf fonts
 ```
-
 
 ## Gitのバージョンを上げる
 
@@ -269,10 +267,9 @@ ssh-add -l
 
 ```shell
 git clone git@github.com:makoto-developer/dotfiles.git
+
+# README.mdをみて設定をする
 ```
-
-
-# 設定編
 
 ## iterm
 
@@ -282,17 +279,26 @@ itermのprofileから↓のパスの設定ファイルをimportする
 ~/dotfiles/iterm/
 ```
 
-## `cmd + enter`で最大化しないようにする
+`cmd + enter`で最大化しないようにする
 
 ```text
 Keys -> Key Bindings -> +ボタン -> 'CMD + ENTER' is disabled`
 ```
+
+itermのフォントをpowerlineのフォントに変更しておく
+
+```text
+itermを開いて profiles -> text -> font -> 「power」がつくフォントを選ぶ
+```
+
 
 ## キーボード設定
 
 <img width="630" alt="image" src="https://user-images.githubusercontent.com/72484465/182054276-ca00b1e0-840e-4bc8-9205-e2e09a0aab18.png">
 
 ## キーリピート設定変更
+
+入力速度を速くする
 
 ```shell
 defaults write -g InitialKeyRepeat -int 11
@@ -322,93 +328,11 @@ curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fi
 # 文字化け対策
 fisher install oh-my-fish/theme-bobthefish
 
-# itermのフォントをpowerlineのフォントに変更しておく
-itermを開いて profiles -> text -> font
 ```
 
-## zshの設定
+## langバージョン管理ツール
 
-### preztoをインストール
-
-[公式サイト](https://github.com/sorin-ionescu/prezto)をみながらインストール
-
-preztoをインストール
-
-```shell
-git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-```
-
-インストールが終わったら↓のコマンドを実行
-
-```shell
-setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
-done
-```
-
-preztoのシンボリックをバックアップ(削除でもOK)
-
-```shell
-mv .zshrc .zshrc_zprezto_original
-```
-
-dotfilesのシンボリックを貼り直す
-
-```shell
-ln -s dotfiles/zsh/zshrc ~/.zshrc
-ln -s dotfiles/zsh/.zsh_profile ~/.zsh_profile
-```
-
-[ここを参照](https://github.com/sorin-ionescu/prezto/tree/master/modules)して必要なテーマを入れる
-
-```shell
-vi .zpreztorc
-
-# 30行目あたりに以下を追加
-   'docker' \
-   'git' \
-   'haskell' \
-   'homebrew' \
-   'node' \
-   'python' \
-   'ssh' \
-   'syntax-highlighting' \
-```
-
-エディタをvimに変更する
-
-```shell
-vi ~/.zprofile
-
-#
-# Editors
-#
-
-export EDITOR='nano' # <-- viにする
-export VISUAL='nano' # <-- viにする
-export PAGER='less'
-```
-
-preztoのテーマを変更する
-
-```shell
-vi .zpreztorc
-
-#  128行目辺り
-#zstyle ':prezto:module:prompt' theme 'sorin'
-zstyle ':prezto:module:prompt' theme 'agnoster'
-```
-
-```shell
-mv ~/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme ~/.zprezto/modules/prompt/external/agnoster/agnoster.zsh-theme-original
-ln -s ~/dotfiles/zsh/agnoster.zsh-theme  ~/.zprezto/modules/prompt/external/agnoster/
-```
-
-
-## バージョン管理ツールインストール
-
-[こちらを参照](https://asdf-vm.com/#/core-manage-asdf)
+[こちら](https://asdf-vm.com/#/core-manage-asdf)を参照しながらインストールする。
 
 macOS -> Homebrew 経由でインストール
 
@@ -440,68 +364,40 @@ asdf plugin add julia
 
 ### Elixirをインストール
 
-Elixirのバージョンを確認
-
 ```shell
 asdf list all elixir
-```
-
-最新のElixirを入れる
-
-```shell
+# 最新のバージョンを入れる
 asdf install elixir 1.13.2-otp-24
-```
-
-インストールしたのElixirのバージョンを確認
-
-```shell
-asdf list elixir
-```
-
-Elixirを使えるようにする
-
-```shell
 asdf global elixir 1.13.2-otp-24
-```
-
-プロジェクトごとに固定にする場合はlocalを使う
-
-```shell
-asdf local elixir 1.13.2-otp-24
 ```
 
 ### Erlangインストール
 
-elixirと同じく、インストール可能なElixirバージョンを確認
+Elixirのopt-xのバージョンを入れる
 
 ```shell
 asdf list all erlang
-```
-
-最新のErlangを入れる
-
-```shell
 asdf install erlang 24.2.1
-```
-
-インストール済みのErlangのバージョンを確認
-
-```shell
-asdf list erlang
-```
-
-Erlangを使えるようにする
-
-```shell
 asdf global erlang 24.2.1
 ```
 
-プロジェクトごとに固定にする場合はlocalを使う
+### Node.jsインストール
 
 ```shell
-asdf local erlang 24.2.1
+asdf list all nodejs
+asdf install nodejs 16.17.1
+asdf global nodejs 16.17.1
 ```
 
+### golang インストール
+
+```shell
+asdf plugin add golang
+asdf install golang 1.20.4
+asdf global golang 1.20.4
+
+# 環境変数を設定
+```
 ### 動作確認
 
 以下のコマンドが使えるかチェック
@@ -510,58 +406,17 @@ asdf local erlang 24.2.1
 iex
 erl
 mix
+node -v
+go version
 ```
-
-### Phoenixインストール
-
-```shell
-mix archive.install hex phx_new
-```
-
-## vimの設定
-
-jetbrains製品でも同じvimの設定を共有する
-
-```shell
-ln -s ~/dotfiles/vim/.vimrc ~/.ideavimrc
-```
-
-## Node.jsインストール
-
-###  インストール可能なバージョンを確認
-
-```shell
-asdf list all nodejs
-```
-
-### nodejsをインストール
-
-```shell
-set NODE_VERSION=16.17.1
-asdf install nodejs $NODE_VERSION
-```
-
-### バージョンを固定化
-
-グローバルで固定にするとき
-
-```shell
-asdf global nodejs $NODE_VERSION
-```
-
-プロジェクトごとに固定化するとき
-
-```shell
-asdf local nodejs $NODE_VERSION
-```
-
 
 # chromeの拡張で入れているもの
 
 - Octotree GitHub code tree (githubにtree形式でフォルダ構造がみえるようにする)
-- vimium (vimライクにchromeの移動が可能
+- Vimium (vimライクにchromeの移動が可能
 - ColorPick Eyedropper (画面のドットの色を抽出)
 - Fonts Ninja (画面で見えているフォントを調べる)
+- ブックマーク検索 (ブックマークを検索する)
 
 
 ## docker + lima環境構築
@@ -615,42 +470,12 @@ docker ps -a
 docker stop start-nginx
 ```
 
-## twty
 
-カフェとかで画面見られたときに恥ずかしい(セキュリティ的にもアウトか)のでcliで投稿できるようにしたいため導入
+# macOS Systemの設定
 
-```shell
-brew install twty
-```
-
-[how_to_use_twty.md](./how_to_use_twty.md)
-
-## golang インストール
-
-```shell
-# TODO 記載する
-asdf plugin add golang
-asdf install golang 1.9
-asdf global golang 1.9
-
-# 環境変数を設定
-## TODO 追記する
-```
-
-## npmで入れておくもの
-
-```shell
-node -v
-npm i -i yarn
-```
-
-
-# macOSの設定
-
+- 言語をUSに変更する
 - 端末の名前を変更する
 - ファイヤーウォールをONにする
-- マウスカーソルの速度を最大にする
-- トラックパッドの速度を最大にする
 - Caps Lockをctrlに変更する
 - 時間
   - 秒を表示する
@@ -665,15 +490,7 @@ npm i -i yarn
   - 不要なアプリをDockから削除する
   - 最近使ったアプリを表示しない
   - 位置を左側に変更する
-  - すケースエフェクトでウィンドウをしまう
-- スクリーンショットの保存先を変更する
-
-↓のコマンドを実行する
-
-```shell
-defaults write com.apple.screencapture location ~/Screenshot/;killall SystemUIServer
-```
-
+  - スケールエフェクトでウィンドウをしまう 
 - Finder
   - 左ナビバーにホームディレクトリを追加
   - Air Dropを削除
@@ -681,11 +498,25 @@ defaults write com.apple.screencapture location ~/Screenshot/;killall SystemUISe
   - 拡張子を表示する
   - 隠しファイル/ディレクトリを表示する(`cmd + shift + .`)
 - ホットコーナーを無効化する
-- スクリーンショット撮影後にサムネイルを表示しない
+- spotlight
+  - アプリケーションとシステム環境設定以外はすべて無効化
+  - ショートカットを`ctrl + space`に変更
+- キーボード
+  - 数字の全角入力をオフにする
+  - シングルクォーテーション、ダブルクオーテーションの自動変換をオフにする
+  - スペルの自動変換をオフにする
+
+スクリーンショットの保存先を変更する
+
+```shell
+defaults write com.apple.screencapture location ~/Screenshot/;killall SystemUIServer
+```
+
+スクリーンショット撮影後にサムネイルを表示しない
 
 `cmd + shift + 5`でスクリーンショットを出す。オプションを選択して「フローティングサムネールを表示」をクリックしてオフにする
 
-- スクリーンショットの影を消し、ファイルサイズを小さくする
+スクリーンショットの影を消し、ファイルサイズを小さくする
 
 ```shell
 defaults write -g ApplePressAndHoldEnabled -bool false
@@ -694,39 +525,13 @@ defaults write com.apple.screencapture type JPG
 killall SystemUIServer
 ```
 
-
-- spotlight
-  - アプリケーションとシステム環境設定以外はすべて無効化
-  - ショートカットを`ctrl + space`に変更
-- キーボード
-  - 数字の全角入力をオフにする
-  - シングルクォーテーション、ダブルクオーテーションの自動変換をオフにする
-  - スペルの自動変換をオフにする
-  - 
-
-
-## vim設定
-
-[dein](https://github.com/Shougo/dein.vim/blob/master/README.md)
-
-```shell
-brew install neovim
-
-# この手順は→のURLを参照する https://github.com/Shougo/dein.vim
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-sh ./installer.sh ~/.cache/dein
-
-# これはやらなくてもいいかも
-python3 -m pip install --user --upgrade pynvim
-
-ln -s ~/dotfiles/vim/nvim ~/.config/nvim
-```
-
 ## gqh
 
+gqhはローカルにあるリポジトリを探すツール
+
 
 ```shell
-fisher install decors/fish-ghq
+brew install ghq
+git config --global ghq.root '~/work/github'
 brew install fzf
-git config --global ghq.root '~/src'
 ```
