@@ -328,6 +328,14 @@ curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fi
 # 文字化け対策
 fisher install oh-my-fish/theme-bobthefish
 
+
+# oh-my-fishをインストール
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+
+# oh-my-fishのプラグインをインストール
+omf install agnoster
+omf theme agnoster
+ln -s ~/dotfiles/fish/init.fish ~/.config/omf/
 ```
 
 ## langバージョン管理ツール
