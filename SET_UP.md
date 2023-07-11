@@ -418,6 +418,11 @@ node -v
 go version
 ```
 
+## brewにないツール
+
+https://www.homerow.app/
+
+
 # chromeの拡張で入れているもの
 
 - Octotree GitHub code tree (githubにtree形式でフォルダ構造がみえるようにする)

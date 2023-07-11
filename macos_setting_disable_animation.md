@@ -74,7 +74,7 @@ defaults write com.apple.dock mineffect suck; killall Dock
 defaults write com.apple.dock expose-animation-duration -float 0.1;killall Dock
 
 # アプリがデスクトップ間を移動する際の速度を変更
-defaults write com.apple.dock workspaces-edge-delay -float 0.2;killall Dock
+defaults write com.apple.dock workspaces-edge-delay -float 0.1;killall Dock
 
 # ファインダーのアニメーションを削除
 defaults write com.apple.finder AnimateInfoPanes -boolean false;killall Finder
