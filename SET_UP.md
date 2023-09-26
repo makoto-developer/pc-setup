@@ -182,6 +182,13 @@ mas install <app id>
 mas install 539883307 # LINE
 ```
 
+負荷試験ツール
+
+```bash
+brew install jmeter
+
+```
+
 ## 開発用のフォントをインストール
 
 [こちら](https://github.com/yuru7/HackGen)を参照
@@ -548,3 +555,7 @@ brew install ghq
 git config --global ghq.root '~/work/github'
 brew install fzf
 ```
+
+
+## terraform
+
