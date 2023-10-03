@@ -130,7 +130,7 @@ brew install awslogs
 brew install awsume
 ```
 
-~~mas(Apple Store上のアプリをコマンドラインからインストールできる)~~
+~~mas(Apple Store上のアプリをコマンドラインからインストールできる)~~ なんかどっか危ない気もするので普通にApple Storeからインストールすればいい。
 
 ```shell
 # mas-cliをインストール
@@ -163,7 +163,9 @@ XCode
 
 ## 開発用のフォントをインストール
 
-[こちら](https://github.com/yuru7/HackGen)を参照
+こちら↓を参照
+
+https://github.com/yuru7/HackGen
 
 ```
 brew tap homebrew/cask-fonts
@@ -172,7 +174,9 @@ brew install font-hackgen  font-hackgen-nerd
 
 ## power fontをインストール(preztoのテーマの設定で必要になるの今のうちに入れる)
 
-[公式](https://github.com/powerline/fonts)を参考にインストール
+公式↓を参考にインストール
+
+https://github.com/powerline/fonts
 
 ```sehll
 git clone https://github.com/powerline/fonts.git --depth=1
@@ -186,7 +190,9 @@ rm -rf fonts
 
 ## Gitのバージョンを上げる
 
-[こちらを参考に](https://qiita.com/normalsalt/items/f200ba50363ebfd46df0)
+こちら↓を参考に
+
+https://qiita.com/normalsalt/items/f200ba50363ebfd46df0
 
 ```shell
 brew install git
@@ -434,7 +440,7 @@ https://www.homerow.app/
 - Fonts Ninja (画面で見えているフォントを調べる)
 - ブックマーク検索 (ブックマークを検索する)
 
-# Chromeのブックマーク
+# Chromeのブックマーク検索を楽にする
 
 ツールを入れなくても検索可能。
 
@@ -442,9 +448,9 @@ https://www.homerow.app/
 
 ちなみにタブを検索することも可能`@タブ <検索したい文字>`
 
-`@タブ`、`@ブックマーク`など日本語から英語`@tabs`, `@bookmark`にしたい場合は英語版のChromeを入れると可能、らしい。
+`@タブ`、`@ブックマーク`など日本語から英語`@tabs`, `@bookmark`にしたい場合は英語版のChromeを入れると可能、らしい(試してない)。
 
-そんなことしなくても、Chromeの拡張機能`Vimium`を入れれば`o`または`b`を押すだけでブックマークやヒストリーを検索することが可能。
+そんなことしなくても、Chromeの拡張機能`Vimium`を入れれば`o`または`b`を押すだけでブックマークやヒストリーを検索することが可能。実務ではほぼこれに頼っている。
 
 ## ~~docker + lima環境構築~~ Rancher DeskTopを入れる
 
@@ -454,7 +460,7 @@ https://www.homerow.app/
 
 # macOS Systemの設定
 
-- 言語をUSに変更する
+- 言語を英語(US)に変更する(日本語モードにすると`ctrl + space`で検索がやりにくい。エンジニアなら英語に慣れろ)
 - 端末の名前を変更する
 - ファイヤーウォールをONにする
 - Caps Lockをctrlに変更する
