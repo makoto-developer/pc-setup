@@ -1,55 +1,45 @@
 # macOS開発環境構築
 
-## iterm2をインストール
+## `iterm2`をインストール
 
-[ここ](https://iterm2.com/)からitem2をインストール
+ここ↓からitem2をインストール
 
 https://iterm2.com/
 
-※macOS純正のterminalを使うとbrewがうまく機能しない場合があるので`iterm2`を使う
+※macOS純正のterminalを使っても良いが、`brew`がうまく機能しない場合があるので`iterm2`を使ったほうがよい。
 
-## [brew](https://brew.sh/index_ja)をインストール
+## `brew`をインストール
+
+ここ↓から`brew`をインストールする
+
+https://brew.sh/
 
 ```shell
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-## 必須ツール
+## 作業ディレクトリを作成しておく
 
-### brewでインストール
+```shell
+mkdir -p ~/work/github ~/work/gitlab ~/opt
+```
+
+
+## `brew`で必要なツールをインストール
+
+必須ツール
 
 ```shell
 brew install --cask google-chrome
 brew install --cask google-japanese-ime
 ```
+## makoto-developerが入れているツール
 
-### Googleで検索してインストール
+GUIアプリ
 
-```text
-カスペルスキー(会社で指定されていなかったら入れておく)
-```
-
-### Apple Storeからインストール
-
-```text
-Line App
-XCode
-```
-
-## ディレクトリを作成しておく
+caskでインストール可能なappの一覧はこちら -> https://github.com/Homebrew/homebrew-cask/tree/master/Casks
 
 ```shell
-mkdir -p ~/work/github ~/opt
-```
-
-## よく使うツールをインストール
-
-**GUIアプリ**
-
-その1 よく使うツール
-
-```shell
-# caskでインストール可能なappの一覧はこちら -> https://github.com/Homebrew/homebrew-cask/tree/master/Casks
 brew install --cask clipy
 brew install --cask alt-tab
 brew install --cask rectangle
@@ -57,23 +47,21 @@ brew install --cask karabiner-elements
 brew install --cask jetbrains-toolbox
 brew install --cask visual-studio-code
 brew install --cask chromium
-```
-
-必要であれば入れるツール1
-
-```shell
-brew install --cask itsycal
 brew install --cask notion
-brew install --cask kindle
 brew install --cask discord
-brew install --cask figma
 brew install --cask slack
-brew install --cask ngrok
 ```
 
-必要であれば入れるツール2
+必要であれば入れる
 
 ```shell
+# デザイン
+brew install --cask itsycal
+brew install --cask figma
+
+# Amazon
+brew install --cask kindle
+
 # online meeting
 brew install --cask skype
 brew install --cask zoom
@@ -93,38 +81,16 @@ brew install --cask microsoft-word
 brew install --cask android-file-transfer
 ```
 
-**コマンド**
-
-よく使うコマンド
+ナウでヤングなコマンド
 
 ```shell
 # other
-brew install gitmoji
 brew install ghq
 brew install fzf
 brew install peco
-```
-
-
-```shell
-# other
-brew install gitmoji
-brew install jq
-brew install htop
-brew install colordiff
-brew install nkf
-brew install fig
-brew install wget
-brew install tree
-```
-
-kubernetes
-
-```shell
-# kubernetes
-brew install kubectx
-brew install kubernetes-cli
-brew install helm
+brew install tig
+brew install bat
+brew install exa
 ```
 
 aws
@@ -164,30 +130,36 @@ brew install awslogs
 brew install awsume
 ```
 
-mas(Apple Store上のアプリをコマンドラインからインストールできる)
+~~mas(Apple Store上のアプリをコマンドラインからインストールできる)~~
 
 ```shell
 # mas-cliをインストール
 brew install mas
-
 # インストール済み
 mas list
-
 # 探す
 mas search <search app name>
-
 # install
 mas install <app id>
-
 mas install 539883307 # LINE
 ```
 
-負荷試験ツール
+`Apple Store`からインストール
 
-```bash
-brew install jmeter
-
+```text
+Line App
+XCode
 ```
+
+
+## セキュリティソフトを入れる
+
+入れても、入れなくてもどっちでもいいが。念の為入れておく。
+
+```text
+カスペルスキー(会社で指定されていなかったら入れておく)
+```
+
 
 ## 開発用のフォントをインストール
 
@@ -315,7 +287,7 @@ defaults delete -g InitialKeyRepeat
 defaults delete -g KeyRepeat
 ```
 
-## fish shell
+## Fish shell
 
 参考: https://zenn.dev/sawao/articles/0b40e80d151d6a
 
@@ -329,7 +301,13 @@ sudo vi /etc/shells
 # デフォルトのシェルを変更
 chsh -s /usr/local/bin/fish
 
-# パッケージマネージャー
+# fish shell configを作成
+ln -s ~/dotfiles/fish/config.fish ~/.config/fish/
+ln -s ~/dotfiles/fish/init.fish ~/.config/omf/
+ln -s ~/dotfiles/fish/conf.d/  ~/.config/fish/
+
+
+# パッケージマネージャー(fisher)
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 
 # 文字化け対策
@@ -345,18 +323,19 @@ omf theme agnoster
 ln -s ~/dotfiles/fish/init.fish ~/.config/omf/
 ```
 
-## langバージョン管理ツール
+## バージョン管理ツール
 
-[こちら](https://asdf-vm.com/#/core-manage-asdf)を参照しながらインストールする。
+こちら↓を参照しながらインストールする。
 
-macOS -> Homebrew 経由でインストール
+https://asdf-vm.com/#/core-manage-asdf
+
 
 ```shell
 sudo xcodebuild -license accept
 brew install asdf
 ```
 
-asdfのパスを通す
+~~asdfのパスを通す~~ `config.fish`に取り込まれているはず
 
 ```shell
 . $(brew --prefix asdf)/asdf.sh
@@ -380,10 +359,12 @@ asdf plugin add julia
 ### Elixirをインストール
 
 ```shell
-asdf list all elixir
 # 最新のバージョンを入れる
-asdf install elixir 1.13.2-otp-24
-asdf global elixir 1.13.2-otp-24
+asdf list all elixir
+ASDF_ELIXIR_VERSION=1.15.6-otp-26
+asdf plugin add elixir
+asdf install elixir $ASDF_ELIXIR_VERSION
+asdf global elixir $ASDF_ELIXIR_VERSION
 ```
 
 ### Erlangインストール
@@ -391,28 +372,39 @@ asdf global elixir 1.13.2-otp-24
 Elixirのopt-xのバージョンを入れる
 
 ```shell
-asdf list all erlang
-asdf install erlang 24.2.1
-asdf global erlang 24.2.1
+ASDF_ERLANG_VERSION=26.1.1
+asdf plugin add erlang
+asdf install erlang $ASDF_ERLANG_VERSION
+asdf global erlang $ASDF_ERLANG_VERSION
 ```
 
 ### Node.jsインストール
 
 ```shell
-asdf list all nodejs
-asdf install nodejs 16.17.1
-asdf global nodejs 16.17.1
+ASDF_NODEJS_VERSION=18.18.0
+asdf plugin add nodejs
+asdf install nodejs $ASDF_NODEJS_VERSION
+asdf global nodejs $ASDF_NODEJS_VERSION
 ```
 
 ### golang インストール
 
 ```shell
+ASDF_GO_VERSION=1.21.1
 asdf plugin add golang
-asdf install golang 1.20.4
-asdf global golang 1.20.4
-
-# 環境変数を設定
+asdf install golang $ASDF_GO_VERSION
+asdf global golang $ASDF_GO_VERSION
 ```
+
+### Rust インストール
+
+```shell
+ASDF_RUST_VERSION=1.72.1
+asdf plugin add rust
+asdf install rust  $ASDF_GO_VERSION
+asdf global rust  $ASDF_GO_VERSION
+```
+
 ### 動作確認
 
 以下のコマンドが使えるかチェック
@@ -423,73 +415,42 @@ erl
 mix
 node -v
 go version
+rustc
 ```
 
-## brewにないツール
+# homerow
+
+macOS上の画面に映るあらゆるオブジェクトを選択できるツール
 
 https://www.homerow.app/
 
+ショートカットを`cmd + opt + ctrl + shift + ↓`で設定している
 
 # chromeの拡張で入れているもの
 
 - Octotree GitHub code tree (githubにtree形式でフォルダ構造がみえるようにする)
-- Vimium (vimライクにchromeの移動が可能
+- Vimium (vimライクにchromeの移動が可能)
 - ColorPick Eyedropper (画面のドットの色を抽出)
 - Fonts Ninja (画面で見えているフォントを調べる)
 - ブックマーク検索 (ブックマークを検索する)
 
+# Chromeのブックマーク
 
-## docker + lima環境構築
+ツールを入れなくても検索可能。
 
-brew install docker docker-compose
+`cmd + l`でアドレスバーに移動、`@ブックマーク <検索したい文字>`で検索できる
 
-(参考リンク)[https://qiita.com/mykysyk@github/items/26926aa98c1591b2f1ed]
+ちなみにタブを検索することも可能`@タブ <検索したい文字>`
 
-```shell
-brew install lima docker docker-compose
-cd ~
-mkdir -p ~/.docker/cli-plugins
-ln -sfn /usr/local/opt/docker-compose/bin/docker-compose ~/.docker/cli-plugins/docker-compose
+`@タブ`、`@ブックマーク`など日本語から英語`@tabs`, `@bookmark`にしたい場合は英語版のChromeを入れると可能、らしい。
 
-# docker-composeが実行できることを確認(空打ち)
-docker-compose
+そんなことしなくても、Chromeの拡張機能`Vimium`を入れれば`o`または`b`を押すだけでブックマークやヒストリーを検索することが可能。
 
-# limactlが実行できることを確認
-limactl -v
+## ~~docker + lima環境構築~~ Rancher DeskTopを入れる
 
-# limaの公式からdockerイメージをダウンロード
-LIMA_VERSION=`limactl -v | awk '{print $3}'`
-curl -o docker.yaml https://raw.githubusercontent.com/lima-vm/lima/v${LIMA_VERSION}/examples/docker.yaml
+`Rancher DeskTop`があるので現在はこちらを使っている
 
-# dockerを起動
-limactl start ./docker.yaml
-
-## 初回尋ねられるので `Proceed with the default configuration`を選択
-## ? Creating an instance "default"  [Use arrows to move, type to filter]
-## > Proceed with the default configuration
-## Open an editor to override the configuration
-
-# zshrcにDockerHostを追加
-echo 'export DOCKER_HOST=unix://$HOME/.lima/docker/sock/docker.sock' >> ~/.zshrc
-source  ~/.zshrc
-
-# dockerの疎通ができることを確認
-docker ps --all
-
-# お試しでNginxが起動できるかどうかを確認(やらなくてもいい)
-docker pull nginx
-docker run --name start-nginx -d -p 8080:80 nginx
-docker ps -a
-```
-
-[localhost:8080](http://localhost:8080)を開いてNginxが動いていることを確認
-
-確認が終わったら終了する
-
-```shell
-docker stop start-nginx
-```
-
+(.docker_lima.md に過去の手順を残した)
 
 # macOS Systemの設定
 
@@ -525,37 +486,51 @@ docker stop start-nginx
   - 数字の全角入力をオフにする
   - シングルクォーテーション、ダブルクオーテーションの自動変換をオフにする
   - スペルの自動変換をオフにする
+- スクリーンショットの保存先を変更する
+  - `cmd + shift + 5`でスクリーンショットを出す。オプションを選択して「フローティングサムネールを表示」をクリックしてオフにする
 
-スクリーンショットの保存先を変更する
+↑全部コマンドで変えることができる。が、一般的な方法でないためテキストで何を変えたかだけ記載する
 
-```shell
-defaults write com.apple.screencapture location ~/Screenshot/;killall SystemUIServer
-```
-
-スクリーンショット撮影後にサムネイルを表示しない
-
-`cmd + shift + 5`でスクリーンショットを出す。オプションを選択して「フローティングサムネールを表示」をクリックしてオフにする
-
-スクリーンショットの影を消し、ファイルサイズを小さくする
-
-```shell
-defaults write -g ApplePressAndHoldEnabled -bool false
-defaults write com.apple.screencapture disable-shadow -bool TRUE
-defaults write com.apple.screencapture type JPG
-killall SystemUIServer
-```
+[macos_setting_disable_animation.md](macos_setting_disable_animation.md)を参照
 
 ## gqh
 
 gqhはローカルにあるリポジトリを探すツール
 
-
 ```shell
 brew install ghq
-git config --global ghq.root '~/work/github'
+git config --global ghq.root '~/work/'
 brew install fzf
 ```
 
+dotfilesリポジトリでシンボリックリンクを貼り付けたので↓の作業は不要。
 
-## terraform
+`vi ~/.config/fish/conf.d/ghq.fish`でファイルを作成して↓を貼り付ける。
+
+```fish
+function ghq_fzf_repo -d 'Repository search'
+  ghq list --full-path | fzf --reverse --height=100% | read select
+  [ -n "$select" ]; and cd "$select"
+  echo " $select "
+  commandline -f repaint
+end
+
+# fish key bindings
+function fish_user_key_bindings
+  bind \cg ghq_fzf_repo
+end
+
+
+function ghq_fzf_repo -d 'Repository search'
+  ghq list --full-path | fzf --reverse --height=100% | read select
+  [ -n "$select" ]; and cd "$select"
+  echo " $select "
+  commandline -f repaint
+end
+
+# fish key bindings
+function fish_user_key_bindings
+  bind \cg ghq_fzf_repo
+end
+```
 
