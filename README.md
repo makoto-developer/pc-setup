@@ -159,6 +159,9 @@ Line App
 XCode
 ```
 
+## Google Driveを入れる
+
+インターネットでGoogle Drive macOSで検索してインストール。同期してバックアップファイルを取得する。
 
 ## セキュリティソフトを入れる
 
