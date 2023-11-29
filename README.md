@@ -347,9 +347,7 @@ ln -s ~/dotfiles/fish/init.fish ~/.config/omf/
 
 https://asdf-vm.com/#/core-manage-asdf
 
-
 ```shell
-sudo xcodebuild -license accept
 brew install asdf
 ```
 
@@ -372,55 +370,15 @@ asdf plugin add rust
 asdf plugin add zig
 asdf plugin add clojure
 asdf plugin add julia
+asdf plugin add terraform
+asdf plugin add bun
 ```
 
-### Elixirをインストール
+install
 
-```shell
-# 最新のバージョンを入れる
-asdf list all elixir
-ASDF_ELIXIR_VERSION=1.15.6-otp-26
-asdf plugin add elixir
-asdf install elixir $ASDF_ELIXIR_VERSION
-asdf global elixir $ASDF_ELIXIR_VERSION
-```
-
-### Erlangインストール
-
-Elixirのopt-xのバージョンを入れる
-
-```shell
-ASDF_ERLANG_VERSION=26.1.1
-asdf plugin add erlang
-asdf install erlang $ASDF_ERLANG_VERSION
-asdf global erlang $ASDF_ERLANG_VERSION
-```
-
-### Node.jsインストール
-
-```shell
-ASDF_NODEJS_VERSION=18.18.0
-asdf plugin add nodejs
-asdf install nodejs $ASDF_NODEJS_VERSION
-asdf global nodejs $ASDF_NODEJS_VERSION
-```
-
-### golang インストール
-
-```shell
-ASDF_GO_VERSION=1.21.1
-asdf plugin add golang
-asdf install golang $ASDF_GO_VERSION
-asdf global golang $ASDF_GO_VERSION
-```
-
-### Rust インストール
-
-```shell
-ASDF_RUST_VERSION=1.72.1
-asdf plugin add rust
-asdf install rust  $ASDF_GO_VERSION
-asdf global rust  $ASDF_GO_VERSION
+```shrll
+cd ~
+asdf install
 ```
 
 ### 動作確認
