@@ -319,8 +319,9 @@ sudo vi /etc/shells
 chsh -s /usr/local/bin/fish
 
 # fish shell configを作成
+rm ~/.config/fish/config.fish
 ln -s ~/dotfiles/fish/config.fish ~/.config/fish/
-ln -s ~/dotfiles/fish/init.fish ~/.config/omf/
+ln -s ~/dotfiles/fish/init.fish ~/.config/fish/
 ln -s ~/dotfiles/fish/conf.d/  ~/.config/fish/
 
 
