@@ -52,14 +52,6 @@ brew install --cask discord
 brew install --cask slack
 ```
 
-Docker
-
-```text
-brew install --cask docker
-or
-brew install --cask rancher
-```
-
 必要であれば入れる
 
 ```shell
@@ -424,6 +416,12 @@ https://www.homerow.app/
 
 ## ~~docker + lima環境構築~~ Rancher DeskTopを入れる
 
+まずはdockerを入れる
+
+```shell
+brew install docker docker-compose
+```
+
 `Rancher DeskTop`があるので現在はこちらを使っている
 
 ```shell
@@ -434,9 +432,10 @@ brew install --cask rancher
 
 個人開発では普通にDocker Desktopで問題ない
 
-```shell
+```text
 brew install --cask docker
 ```
+
 
 # macOS Systemの設定
 
