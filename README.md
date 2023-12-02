@@ -177,7 +177,7 @@ brew install font-hackgen  font-hackgen-nerd
 
 ## power fontをインストール(preztoのテーマの設定で必要になるの今のうちに入れる)
 
-公式↓を参考にインストール
+1. 公式↓を参考にインストール
 
 https://github.com/powerline/fonts
 
@@ -190,6 +190,15 @@ cd fonts
 cd ..
 rm -rf fonts
 ```
+
+2. `poworline-shell`をインストール
+
+https://github.com/b-ryan/powerline-shell
+
+[!TIP]
+`asdf install python 3.9.18`でインストールしたのち、`python setup.py install`を実行。
+macos m1だpython v2系がなくなったので手順書通りやってもできない可能性が高い。
+
 
 ## Gitのバージョンを上げる
 
