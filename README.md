@@ -50,6 +50,10 @@ brew install --cask chromium
 brew install --cask notion
 brew install --cask discord
 brew install --cask slack
+brew install --cask openlens
+~~brew install --cask bloomrpc~~
+brew install --cask postman
+
 ```
 
 必要であれば入れる
@@ -99,8 +103,6 @@ aws
 # cask-drivers
 brew tap homebrew/cask-drivers
 brew install localstack
-
-# default
 brew install aws-cdk
 brew install saml2aws
 brew install awscli
@@ -130,7 +132,7 @@ brew install awslogs
 brew install awsume
 ```
 
-~~mas(Apple Store上のアプリをコマンドラインからインストールできる)~~ なんかどっか危ない気もするので普通にApple Storeからインストールすればいい。
+~~mas(Apple Store上のアプリをコマンドラインからインストールできる)~~ **おすすめしていません** 普通にApple Storeからインストールした方がいいです。
 
 ```shell
 # mas-cliをインストール
