@@ -93,6 +93,12 @@ brew install bat
 brew install exa
 ```
 
+common lisp
+
+```shel
+brew install roswell
+```
+
 aws
 
 ```shell
