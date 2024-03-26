@@ -51,8 +51,11 @@ brew install --cask notion
 brew install --cask discord
 brew install --cask slack
 brew install --cask openlens
+
+# 開発が終了したのでインストールしないでください
 ~~brew install --cask bloomrpc~~
 brew install --cask postman
+
 
 ```
 
@@ -85,7 +88,7 @@ brew install --cask microsoft-word
 brew install --cask android-file-transfer
 ```
 
-ナウでヤングなコマンド
+その他
 
 ```shell
 # other
@@ -95,12 +98,19 @@ brew install peco
 brew install tig
 brew install bat
 brew install exa
+brew install jupyterlab
 ```
 
 common lisp
 
-```shel
+```shell
 brew install roswell
+```
+
+transrate
+
+```shell
+brew install --cask deepl
 ```
 
 aws
