@@ -40,6 +40,7 @@ GUIアプリ
 caskでインストール可能なappの一覧はこちら -> https://github.com/Homebrew/homebrew-cask/tree/master/Casks
 
 ```shell
+brew install --cask warp
 brew install --cask clipy
 brew install --cask alt-tab
 brew install --cask rectangle
