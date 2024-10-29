@@ -6,11 +6,11 @@
 
 https://iterm2.com/
 
-※macOS純正のterminalを使っても良いが、`brew`がうまく機能しない場合があるので`iterm2`を使ったほうがよい。
+※macOS純正のterminalは`brew`がうまく機能しない場合があるので`iterm2`を使う
 
 ## `brew`をインストール
 
-ここ↓から`brew`をインストールする
+ここ↓から`brew`をインストールするか、コマンドでインストール
 
 https://brew.sh/
 
@@ -21,63 +21,53 @@ https://brew.sh/
 ## 作業ディレクトリを作成しておく
 
 ```shell
-mkdir -p ~/work/github ~/work/gitlab ~/opt
+mkdir -p ~/work/github ~/work/gitlab ~/opt ~/tmp
 ```
 
+- `~/work`はGithubや個人開発のプロジェクトを管理する領域
+- `~/opt` -> `Go`製のコマンドなど、手動でダウンロードしてローカルで使う時に配置するディレクトリ
+- `~/tmp` -> 中間ファイルや一時的な作業場でいつでも消えて問題ないディレクトリ
 
-## `brew`で必要なツールをインストール
+## 必要なツールをインストール
 
-必須ツール
-
-```shell
-brew install --cask google-chrome
-brew install --cask google-japanese-ime
-```
-## makoto-developerが入れているツール
-
-GUIアプリ
+方針
+- ツールは可能な限りbrewでインストール
+- プログラミング言語はasdfで管理
+  - 例外として、バージョンを揃えた方がいいツールはasdf
+- brewでインストールする前に必ずhomebrewホームページを見て開発元を確認 -> https://brew.sh/ja/
 
 caskでインストール可能なappの一覧はこちら -> https://github.com/Homebrew/homebrew-cask/tree/master/Casks
 
+必須アプリ
+
 ```shell
-brew install --cask warp
-brew install --cask clipy
-brew install --cask alt-tab
-brew install --cask rectangle
-brew install --cask karabiner-elements
-brew install --cask jetbrains-toolbox
-brew install --cask visual-studio-code
-brew install --cask chromium
-brew install --cask notion
-brew install --cask discord
-brew install --cask slack
-brew install --cask openlens
-
-# 開発が終了したのでインストールしないでください
-~~brew install --cask bloomrpc~~
-brew install --cask postman
-
+brew install --cask google-chrome \
+ google-japanese-ime \
+ clipy \
+ alt-tab \
+ rectangle \
+ karabiner-elements \
+ jetbrains-toolbox \
+ visual-studio-code \
+ chromium \
+ notion \
+ discord \
+ openlens \
+ postman
 
 ```
 
-必要であれば入れる
+必要であれば入れるアプリ
 
 ```shell
-# デザイン
+brew install --cask warp
+brew install --cask slack
 brew install --cask itsycal
 brew install --cask figma
-
-# Amazon
 brew install --cask kindle
-
-# online meeting
 brew install --cask skype
 brew install --cask zoom
-
-# Network
 brew install --cask wireshark
-
-# office
 brew install --cask microsoft-excel
 brew install --cask microsoft-office
 brew install --cask microsoft-openjdk
@@ -89,7 +79,7 @@ brew install --cask microsoft-word
 brew install --cask android-file-transfer
 ```
 
-その他
+コマンド
 
 ```shell
 # other
@@ -102,65 +92,10 @@ brew install exa
 brew install jupyterlab
 ```
 
-common lisp
+Common lisp
 
 ```shell
 brew install roswell
-```
-
-transrate
-
-```shell
-brew install --cask deepl
-```
-
-aws
-
-```shell
-# cask-drivers
-brew tap homebrew/cask-drivers
-brew install localstack
-brew install aws-cdk
-brew install saml2aws
-brew install awscli
-brew install --cask dynamodb-local
-brew install --cask aws-vault
-brew install kube-aws
-brew install aws-apigateway-importer
-brew install aws-auth
-brew install aws-cfn-tools
-brew install aws-console
-brew install aws-elasticbeanstalk
-brew install aws-es-proxy
-brew install aws-google-auth
-brew install aws-iam-authenticator
-brew install aws-keychain
-brew install aws-nuke
-brew install aws-okta
-brew install aws-rotate-key
-brew install aws-sdk-cpp
-brew install aws-shell
-brew install aws-sso-util
-brew install aws-vault
-brew install aws2-wrap
-brew install awscli@1
-brew install awscurl
-brew install awslogs
-brew install awsume
-```
-
-~~mas(Apple Store上のアプリをコマンドラインからインストールできる)~~ **おすすめしていません** 普通にApple Storeからインストールした方がいいです。
-
-```shell
-# mas-cliをインストール
-brew install mas
-# インストール済み
-mas list
-# 探す
-mas search <search app name>
-# install
-mas install <app id>
-mas install 539883307 # LINE
 ```
 
 `Apple Store`からインストール
@@ -442,7 +377,7 @@ https://www.homerow.app/
 
 そんなことしなくても、Chromeの拡張機能`Vimium`を入れれば`o`または`b`を押すだけでブックマークやヒストリーを検索することが可能。実務ではほぼこれに頼っている。
 
-## ~~docker + lima環境構築~~ Rancher DeskTopを入れる
+## Rancher DeskTopを入れる
 
 まずはdockerを入れる
 
@@ -547,3 +482,15 @@ function fish_user_key_bindings
 end
 ```
 
+
+# jetbrains
+
+**キーのリピート入力を受け付けてくれない**
+
+以下のコマンドを入力してアプリを再起動
+
+```shell
+defaults write -g ApplePressAndHoldEnabled -bool false
+```
+
+Reference: https://support.samuraism.com/jetbrains/trouble-shooting/key-repeat-terminal
