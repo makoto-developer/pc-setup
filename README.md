@@ -41,20 +41,19 @@ caskでインストール可能なappの一覧はこちら -> https://github.com
 必須アプリ
 
 ```shell
-brew install --cask google-chrome \
- google-japanese-ime \
- clipy \
- alt-tab \
- rectangle \
- karabiner-elements \
- jetbrains-toolbox \
- visual-studio-code \
- chromium \
- notion \
- discord \
- openlens \
- postman
-
+brew install --cask google-chrome
+brew install --cask  google-japanese-ime
+brew install --cask  clipy
+brew install --cask  alt-tab
+brew install --cask  rectangle
+brew install --cask  karabiner-elements
+brew install --cask  jetbrains-toolbox
+brew install --cask  visual-studio-code
+brew install --cask  chromium
+brew install --cask  notion
+brew install --cask  discord
+brew install --cask  openlens
+brew install --cask  postman
 ```
 
 必要であれば入れるアプリ
@@ -77,6 +76,13 @@ brew install --cask microsoft-remote-desktop
 brew install --cask microsoft-teams
 brew install --cask microsoft-word
 brew install --cask android-file-transfer
+```
+
+Caskで入らないアプリ
+
+```text
+Google Drive (https://workspace.google.com/products/drive/#download)
+One Drive(https://www.microsoft.com/ja-jp/microsoft-365/onedrive/online-cloud-storage)
 ```
 
 コマンド
@@ -105,18 +111,29 @@ Line App
 XCode
 ```
 
+## Common Lispの実行環境をつくる
+
+asdfで入れようとしたらsbclコマンドが実行されない、というか実行ファイルが存在しない。直し方がわからないので`brew`で入れている。
+
+
+```sehll
+asdf plugin-add sbcl https://github.com/smashedtoatoms/asdf-sbcl.git
+asdf install sbcl 2.5.1
+asdf set -u sbcl 2.5.1
+```
+
+
+```sehll
+brew install sbcl
+```
+
 ## Google Driveを入れる
 
 インターネットでGoogle Drive macOSで検索してインストール。同期してバックアップファイルを取得する。
 
 ## セキュリティソフトを入れる
 
-入れても、入れなくてもどっちでもいいが。念の為入れておく。
-
-```text
-カスペルスキー(会社で指定されていなかったら入れておく)
-```
-
+必要であれば入れる
 
 ## 開発用のフォントをインストール
 
@@ -126,7 +143,7 @@ https://github.com/yuru7/HackGen
 
 ```
 brew tap homebrew/cask-fonts
-brew install font-hackgen  font-hackgen-nerd
+brew install font-hackgen font-hackgen-nerd
 ```
 
 ## power fontをインストール(preztoのテーマの設定で必要になるの今のうちに入れる)
@@ -306,7 +323,9 @@ https://asdf-vm.com/#/core-manage-asdf
 brew install asdf
 ```
 
-~~asdfのパスを通す~~ `config.fish`に取り込まれているはず
+asdfのパスを通す
+
+(`config.fish`に取り込まれているはず)
 
 ```shell
 . $(brew --prefix asdf)/asdf.sh
@@ -343,41 +362,42 @@ asdf install
 ```shell
 iex
 erl
-mix
 node -v
 go version
 rustc
 ```
 
+# Elixir Phoenix インストール
+
+公式サイトを参考にインストールする(https://hexdocs.pm/phoenix/installation.html)
+
+```shell
+mix archive.install hex phx_new
+```
+
+コマンドが使えるか確認
+
+```shell
+mix
+```
+
 # homerow
 
-macOS上の画面に映るあらゆるオブジェクトを選択できるツール
+macOS上の画面に映るあらゆるオブジェクトをコマンドで選択できるツール
 
-https://www.homerow.app/
+公式サイトを参考にインストール(https://www.homerow.app/)
 
 ショートカットを`cmd + opt + ctrl + shift + ↓`で設定している
 
 # chromeの拡張で入れているもの
 
-- Octotree GitHub code tree (githubにtree形式でフォルダ構造がみえるようにする)
 - Vimium (vimライクにchromeの移動が可能)
 - ColorPick Eyedropper (画面のドットの色を抽出)
-- Fonts Ninja (画面で見えているフォントを調べる)
-- ブックマーク検索 (ブックマークを検索する)
-
-# Chromeのブックマーク検索を楽にする
-
-ツールを入れなくても検索可能。
-
-`cmd + l`でアドレスバーに移動、`@ブックマーク <検索したい文字>`で検索できる
-
-ちなみにタブを検索することも可能`@タブ <検索したい文字>`
-
-`@タブ`、`@ブックマーク`など日本語から英語`@tabs`, `@bookmark`にしたい場合は英語版のChromeを入れると可能、らしい(試してない)。
-
-そんなことしなくても、Chromeの拡張機能`Vimium`を入れれば`o`または`b`を押すだけでブックマークやヒストリーを検索することが可能。実務ではほぼこれに頼っている。
+- React Developer Tools(Reactのデバックができる)
 
 ## Rancher DeskTopを入れる
+
+※ limaを使っていたがRancher Desktopが便利(.docker_lima.mdに移動)
 
 まずはdockerを入れる
 
@@ -385,15 +405,13 @@ https://www.homerow.app/
 brew install docker docker-compose
 ```
 
-`Rancher DeskTop`があるので現在はこちらを使っている
+`Rancher DeskTop`をインストール
 
 ```shell
 brew install --cask rancher
 ```
 
-(.docker_lima.md に過去の手順を残した)
-
-個人開発では普通にDocker Desktopで問題ない
+Non-Commercial(非商用利用)であればDocker Desktopで問題ない
 
 ```text
 brew install --cask docker
@@ -447,7 +465,7 @@ gqhはローカルにあるリポジトリを探すツール
 
 ```shell
 brew install ghq
-git config --global ghq.root '~/work/'
+git config --global ghq.root '~/work/repository/'
 brew install fzf
 ```
 
@@ -485,9 +503,7 @@ end
 
 # jetbrains
 
-**キーのリピート入力を受け付けてくれない**
-
-以下のコマンドを入力してアプリを再起動
+キーのリピート入力を受け付けてくれない現象を解決するために、次のコマンドを入力してアプリを再起動
 
 ```shell
 defaults write -g ApplePressAndHoldEnabled -bool false

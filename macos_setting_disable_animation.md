@@ -1,6 +1,6 @@
 # macOS設定
 
-MacOSのアニメーションをオフ(短く)したり、無駄だと感じる挙動をオフにする
+macOSの設定をコマンドで変更する。変更後はrestartしないと反映されない設定がある。
 
 ```shell
 # Finderのファイルを開くときのすべてのアニメーションを無効化
@@ -88,4 +88,25 @@ defaults write -g InitialKeyRepeat -int 12
 # normal minimum is 15 (225 ms)
 defaults write -g KeyRepeat -int 1
 # normal minimum is 2 (30 ms)
+```
+
+```shell
+# スペル修正を無効化
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
+# マウスの速度を最速化
+defaults write -g com.apple.mouse.scaling 5
+
+# dockを非表示。カーソルを合わせると表示。
+defaults write com.apple.dock autohide -bool true
+
+
+```
+
+## `defaults`コマンド
+
+macOSにどんなアプリが入っているか調べるコマンド
+
+```shell
+defaults domains
 ```
