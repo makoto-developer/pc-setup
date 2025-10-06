@@ -88,7 +88,7 @@ One Drive(https://www.microsoft.com/ja-jp/microsoft-365/onedrive/online-cloud-st
 コマンド
 
 ```shell
-# other
+brew install nvim
 brew install ghq
 brew install fzf
 brew install peco
@@ -98,42 +98,13 @@ brew install exa
 brew install jupyterlab
 ```
 
-Common lisp
-
-```shell
-brew install roswell
-```
-
-`Apple Store`からインストール
-
-```text
-Line App
-XCode
-```
-
-## Common Lispの実行環境をつくる
-
-asdfで入れようとしたらsbclコマンドが実行されない、というか実行ファイルが存在しない。直し方がわからないので`brew`で入れている。
-
-
-```sehll
-asdf plugin-add sbcl https://github.com/smashedtoatoms/asdf-sbcl.git
-asdf install sbcl 2.5.1
-asdf set -u sbcl 2.5.1
-```
-
-
-```sehll
-brew install sbcl
-```
-
 ## Google Driveを入れる
 
 インターネットでGoogle Drive macOSで検索してインストール。同期してバックアップファイルを取得する。
 
-## セキュリティソフトを入れる
+## セキュリティソフト
 
-必要であれば入れる
+必要なら入れる
 
 ## 開発用のフォントをインストール
 
@@ -282,77 +253,31 @@ defaults delete -g KeyRepeat
 
 ```shell
 brew install fish
-
-# fishを追加
-sudo vi /etc/shells
-# 最後に追加 /usr/local/bin/fish
-
-# デフォルトのシェルを変更
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 
 # fish shell configを作成
 rm ~/.config/fish/config.fish
 ln -s ~/dotfiles/fish/config.fish ~/.config/fish/
 ln -s ~/dotfiles/fish/init.fish ~/.config/fish/
-ln -s ~/dotfiles/fish/conf.d/  ~/.config/fish/
+mv ~/dotfiles/fish/conf.d ~/dotfiles/fish/conf.d.org
+ln -s ~/dotfiles/fish/conf.d  ~/.config/fish/
 
-
-# パッケージマネージャー(fisher)
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-
-# 文字化け対策
-fisher install oh-my-fish/theme-bobthefish
-
-
-# oh-my-fishをインストール
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-
-# oh-my-fishのプラグインをインストール
-omf install agnoster
-omf theme agnoster
-ln -s ~/dotfiles/fish/init.fish ~/.config/omf/
 ```
 
 ## バージョン管理ツール
 
-こちら↓を参照しながらインストールする。
-
-https://asdf-vm.com/#/core-manage-asdf
-
 ```shell
-brew install asdf
-```
-
-asdfのパスを通す
-
-(`config.fish`に取り込まれているはず)
-
-```shell
-. $(brew --prefix asdf)/asdf.sh
-. $(brew --prefix asdf)/libexec/asdf.sh
-```
-
-プラグインを入れる(使いそうにないやつは削除)
-
-```shell
-asdf plugin add haskell
-asdf plugin add erlang
-asdf plugin add elixir
-asdf plugin add nodejs
-asdf plugin add golang
-asdf plugin add rust
-asdf plugin add zig
-asdf plugin add clojure
-asdf plugin add julia
-asdf plugin add terraform
-asdf plugin add bun
+brew install mise
 ```
 
 install
 
 ```shrll
 cd ~
-asdf install
+# https://github.com/makoto-developer/dotfilesを参照
+ln -s ~/dotfiles/asdf/.tool-versions ~
+mise i
 ```
 
 ### 動作確認
@@ -360,11 +285,11 @@ asdf install
 以下のコマンドが使えるかチェック
 
 ```shell
-iex
-erl
+iex version
+erl version
 node -v
 go version
-rustc
+rustc -V
 ```
 
 # Elixir Phoenix インストール
@@ -381,23 +306,14 @@ mix archive.install hex phx_new
 mix
 ```
 
-# homerow
-
-macOS上の画面に映るあらゆるオブジェクトをコマンドで選択できるツール
-
-公式サイトを参考にインストール(https://www.homerow.app/)
-
-ショートカットを`cmd + opt + ctrl + shift + ↓`で設定している
-
 # chromeの拡張で入れているもの
 
-- Vimium (vimライクにchromeの移動が可能)
-- ColorPick Eyedropper (画面のドットの色を抽出)
-- React Developer Tools(Reactのデバックができる)
+脆弱性が心配なのでほとんど何も入れてない
 
 ## Rancher DeskTopを入れる
 
-※ limaを使っていたがRancher Desktopが便利(.docker_lima.mdに移動)
+~~lima やめた~~
+Rancher Desktopが便利(.docker_lima.mdに移動)
 
 まずはdockerを入れる
 
@@ -464,49 +380,6 @@ brew install --cask docker
 gqhはローカルにあるリポジトリを探すツール
 
 ```shell
-brew install ghq
-git config --global ghq.root '~/work/repository/'
-brew install fzf
+brew install ghq fzf hstr
+git config --global ghq.root '~/work/repositories/'
 ```
-
-dotfilesリポジトリでシンボリックリンクを貼り付けたので↓の作業は不要。
-
-`vi ~/.config/fish/conf.d/ghq.fish`でファイルを作成して↓を貼り付ける。
-
-```fish
-function ghq_fzf_repo -d 'Repository search'
-  ghq list --full-path | fzf --reverse --height=100% | read select
-  [ -n "$select" ]; and cd "$select"
-  echo " $select "
-  commandline -f repaint
-end
-
-# fish key bindings
-function fish_user_key_bindings
-  bind \cg ghq_fzf_repo
-end
-
-
-function ghq_fzf_repo -d 'Repository search'
-  ghq list --full-path | fzf --reverse --height=100% | read select
-  [ -n "$select" ]; and cd "$select"
-  echo " $select "
-  commandline -f repaint
-end
-
-# fish key bindings
-function fish_user_key_bindings
-  bind \cg ghq_fzf_repo
-end
-```
-
-
-# jetbrains
-
-キーのリピート入力を受け付けてくれない現象を解決するために、次のコマンドを入力してアプリを再起動
-
-```shell
-defaults write -g ApplePressAndHoldEnabled -bool false
-```
-
-Reference: https://support.samuraism.com/jetbrains/trouble-shooting/key-repeat-terminal
