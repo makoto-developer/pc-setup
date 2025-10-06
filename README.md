@@ -155,10 +155,11 @@ brew install git
 ## sshを設定
 
 ```shell
+$ brew install git-delta
 $ cd ~
 $ mkdir .ssh
-$ cd $_
-$ ssh-keygen -t ed25519 -C "<<<your email>>>"
+$ cd .ssh
+$ ssh-keygen -t ed25519 -C "GitHub(makoto-developer)" -f ~/.ssh/id_github_20251006_ed25519
 
 # Generating public/private ed25519 key pair.
 # Enter file in which to save the key (/Users/user/.ssh/id_ed25519): id_github <<<githubを例に。ドメインごとにsshkeyを作成する。流用しない。>>>
@@ -179,7 +180,7 @@ $ ssh-keygen -t ed25519 -C "<<<your email>>>"
 # +----[SHA256]-----+
 
 # コピーしてsshキーをgithubに登録
-pbcopy < ~/.ssh/id_github.pub
+pbcopy < ~/.ssh/id_github_20251006_ed25519.pub
 # ssh configを設定
 touch ~/.ssh/config
 
@@ -189,14 +190,14 @@ Host github.com
   HostName github.com
   User <<<your name>>>
   Port 22
-  IdentityFile ~/.ssh/id_github
+  IdentityFile ~/.ssh/id_github_20251006_ed25519
   IdentitiesOnly yes
 
 # 疎通確認
 ssh -T git@github.com
 
 # パスフレーズの入力を省略
-ssh-add -K ~/.ssh/id_github
+ssh-add -K ~/.ssh/id_github_20251006_ed25519
 
 # 登録できたか確認
 ssh-add -l
