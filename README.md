@@ -89,13 +89,18 @@ One Drive(https://www.microsoft.com/ja-jp/microsoft-365/onedrive/online-cloud-st
 
 ```shell
 brew install nvim
-brew install ghq
-brew install fzf
-brew install peco
-brew install tig
-brew install bat
-brew install exa
-brew install jupyterlab
+# 履歴から使いたいコマンドを呼び起こす(Fishで困っていないから使ってない)
+#brew install peco
+# git cui client(標準で十分なので使ってない)
+#brew install tig
+# lessの代替(lessでええやん)
+#brew install bat
+```
+
+ghqの設定で必要なコマンド
+
+```shell
+brew install ghq fzf hstr
 ```
 
 ## Google Driveを入れる
@@ -231,11 +236,6 @@ itermのフォントをpowerlineのフォントに変更しておく
 itermを開いて profiles -> text -> font -> 「power」がつくフォントを選ぶ
 ```
 
-
-## キーボード設定
-
-<img width="630" alt="image" src="https://user-images.githubusercontent.com/72484465/182054276-ca00b1e0-840e-4bc8-9205-e2e09a0aab18.png">
-
 ## キーリピート設定変更
 
 入力速度を速くする
@@ -258,10 +258,10 @@ echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
 
 # fish shell configを作成
-rm ~/.config/fish/config.fish
+mv ~/.config/fish/config.fish ~/.config/fish/config.fish.org
+mv ~/.config/fish/conf.d ~/.config/fish/conf.d.org
 ln -s ~/dotfiles/fish/config.fish ~/.config/fish/
 ln -s ~/dotfiles/fish/init.fish ~/.config/fish/
-mv ~/dotfiles/fish/conf.d ~/dotfiles/fish/conf.d.org
 ln -s ~/dotfiles/fish/conf.d  ~/.config/fish/
 
 ```
@@ -337,8 +337,7 @@ brew install --cask docker
 
 # macOS Systemの設定
 
-- 言語を英語(US)に変更する(日本語モードにすると`ctrl + space`で検索がやりにくい。エンジニアなら英語に慣れろ)
-- 端末の名前を変更する
+- 言語を英語(US)に変更する
 - ファイヤーウォールをONにする
 - Caps Lockをctrlに変更する
 - 時間
@@ -346,21 +345,8 @@ brew install --cask docker
   - 24時間表示にする
 - メニューバーにバッテリーの残量を表示する
 - メニューバーにボリュームを表示する
-- メニューバーからSpotlightとsiriを削除する
 - siriは無効化する
-- Mission Controlにある使わないアプリはひとつにまとめてどける
-- Dock
-  - Dockを自動で表示する
-  - 不要なアプリをDockから削除する
-  - 最近使ったアプリを表示しない
-  - 位置を左側に変更する
-  - スケールエフェクトでウィンドウをしまう 
-- Finder
-  - 左ナビバーにホームディレクトリを追加
-  - Air Dropを削除
-  - 不要なディレクトリを削除
-  - 拡張子を表示する
-  - 隠しファイル/ディレクトリを表示する(`cmd + shift + .`)
+- Mission Controlにある使わないアプリはひとつにまとめて削除
 - ホットコーナーを無効化する
 - spotlight
   - アプリケーションとシステム環境設定以外はすべて無効化
@@ -369,18 +355,3 @@ brew install --cask docker
   - 数字の全角入力をオフにする
   - シングルクォーテーション、ダブルクオーテーションの自動変換をオフにする
   - スペルの自動変換をオフにする
-- スクリーンショットの保存先を変更する
-  - `cmd + shift + 5`でスクリーンショットを出す。オプションを選択して「フローティングサムネールを表示」をクリックしてオフにする
-
-↑全部コマンドで変えることができる。が、一般的な方法でないためテキストで何を変えたかだけ記載する
-
-[macos_setting_disable_animation.md](macos_setting_disable_animation.md)を参照
-
-## gqh
-
-gqhはローカルにあるリポジトリを探すツール
-
-```shell
-brew install ghq fzf hstr
-git config --global ghq.root '~/work/repositories/'
-```
