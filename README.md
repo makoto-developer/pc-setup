@@ -38,22 +38,44 @@ mkdir -p ~/work/github ~/work/gitlab ~/opt ~/tmp
 
 caskでインストール可能なappの一覧はこちら -> https://github.com/Homebrew/homebrew-cask/tree/master/Casks
 
+
+```shell
+brew update
+# 不要なキャッシュ削除
+brew cleanup
+```
+
 必須アプリ
 
 ```shell
 brew install --cask google-chrome
-brew install --cask  google-japanese-ime
-brew install --cask  clipy
-brew install --cask  alt-tab
-brew install --cask  rectangle
-brew install --cask  karabiner-elements
-brew install --cask  jetbrains-toolbox
-brew install --cask  visual-studio-code
-brew install --cask  chromium
-brew install --cask  notion
-brew install --cask  discord
-brew install --cask  openlens
-brew install --cask  postman
+brew install --cask google-japanese-ime
+brew install --cask clipy
+brew install --cask alt-tab
+brew install --cask rectangle
+brew install --cask karabiner-elements
+brew install --cask jetbrains-toolbox
+brew install --cask visual-studio-code
+brew install --cask chromium
+brew install --cask notion
+brew install --cask discord
+brew install --cask openlens
+brew install --cask postman
+brew install --cask firefox
+brew install --cask microsoft-edge
+brew install --cask docker
+```
+
+```shell
+brew install gh
+brew install git-lfs
+brew install terraform
+```
+
+SQLのフォーマッターはこれに統一している
+
+```shell
+brew install sql-formatter
 ```
 
 必要であれば入れるアプリ
@@ -85,16 +107,30 @@ Google Drive (https://workspace.google.com/products/drive/#download)
 One Drive(https://www.microsoft.com/ja-jp/microsoft-365/onedrive/online-cloud-storage)
 ```
 
+強化版コマンド
+
+```shell
+# これがあれば統合エディタは不要
+brew install nvim
+# 履歴から使いたいコマンドを探す
+brew install peco
+# gitのCUIの見た目をよくしてくれる
+brew install tig
+# lessの代替
+brew install bat
+# リアルタイムなプロセス表示
+brew install htop
+# findの高速版
+brew install fd
+# grepを高速化、正確
+brew install ripgrep
+```
+
 コマンド
 
 ```shell
-brew install nvim
-# 履歴から使いたいコマンドを呼び起こす(Fishで困っていないから使ってない)
-#brew install peco
-# git cui client(標準で十分なので使ってない)
-#brew install tig
-# lessの代替(lessでええやん)
-#brew install bat
+# ローカルで簡単にKubernetes Clusterを作るコマンド
+brew install kind
 ```
 
 ghqの設定で必要なコマンド
