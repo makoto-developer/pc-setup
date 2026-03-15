@@ -154,7 +154,6 @@ brew install ghq fzf hstr
 https://github.com/yuru7/HackGen
 
 ```
-brew tap homebrew/cask-fonts
 brew install font-hackgen font-hackgen-nerd
 ```
 
@@ -283,6 +282,8 @@ defaults write -g KeyRepeat -int 1
 defaults delete -g InitialKeyRepeat
 defaults delete -g KeyRepeat
 ```
+
+再起動する
 
 ## Fish shell
 
