@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew update)",
+      "Bash(brew cleanup)",
+      "Bash(brew list:*)",
+      "Bash(brew leaves)",
+      "Bash(brew info:*)",
+      "Bash(brew install:*)",
+      "Bash(defaults read:*)",
+      "Bash(defaults -currentHost read:*)",
+      "Bash(defaults write:*)",
+      "Bash(defaults -currentHost write:*)",
+      "Bash(mkdir:*)",
+      "Bash(git config:*)",
+      "Bash(git clone:*)",
+      "Bash(git remote:*)",
+      "Bash(ghq root)",
+      "Bash(ghq list:*)",
+      "Bash(ghq get:*)",
+      "Bash(gh auth status)",
+      "Bash(gh repo list:*)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(ssh-add -l)",
+      "Bash(pbcopy:*)",
+      "Bash(killall Dock SystemUIServer ControlCenter)",
+      "Bash(xcodebuild:*)",
+      "Bash(mise:*)",
+      "Bash(docker --version)",
+      "Bash(docker compose version)"
+    ]
+  }
+}
