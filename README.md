@@ -496,12 +496,28 @@ signingkey = ~/.ssh/id_github_20251006_ed25519.pub
 
 2. GitHubへ署名用の鍵として登録する。認証(Authentication Key)とは別枠なので、同じ鍵でも改めて登録が必要。
 
+ブラウザで登録する場合:
+
 ```shell
 # 公開鍵をコピー
 pbcopy < ~/.ssh/id_github_20251006_ed25519.pub
 ```
 
 - https://github.com/settings/keys を開く -> `New SSH key` -> `Key type`を`Signing Key`にして登録
+
+ghコマンドで登録する場合:
+
+```shell
+# 鍵登録のスコープを追加(ブラウザでワンタイムコードを入力する)
+# ※Claudeセッションなど非対話の実行では -h github.com が必須
+gh auth refresh -h github.com -s admin:ssh_signing_key
+
+# 署名用として鍵を登録
+gh ssh-key add ~/.ssh/id_github_20251006_ed25519.pub --type signing --title "<マシン名> signing"
+
+# 登録できたか確認
+gh api /user/ssh_signing_keys -q '.[].title'
+```
 
 3. ローカル検証用のallowed_signersを作成する(dotfilesの`.gitconfig`が参照している)
 
