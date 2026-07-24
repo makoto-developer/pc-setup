@@ -209,6 +209,8 @@ brew install --cask clipy
 brew install --cask rectangle
 brew install --cask karabiner-elements
 brew install --cask jetbrains-toolbox
+# アイコン表示対応の等幅フォント(nvimのUI用。iTermのフォントに設定する)
+brew install --cask font-hackgen-nerd
 # ※orcaのcaskは2026-09-01に無効化予定(Gatekeeper非対応のため)。入らなくなったら公式サイトから入れる
 brew install --cask orca
 brew install --cask visual-studio-code
@@ -277,6 +279,8 @@ brew install htop
 brew install fd
 # grepを高速化、正確
 brew install ripgrep
+# cdの強化版(z <名前の一部>で頻出ディレクトリへジャンプ)
+brew install zoxide
 ```
 
 コマンド
@@ -433,6 +437,12 @@ gh auth status
 gh repo list --limit 5
 ```
 
+拡張: PRダッシュボード(設定はdotfilesの`gh-dash/`参照)
+
+```shell
+gh extension install dlvhdr/gh-dash
+```
+
 ## GitHub APIトークン(Personal Access Token)の生成
 
 APIやCIからGitHubを操作する時に使うトークン。権限とリポジトリを絞れるFine-grained tokenを使う。
@@ -537,6 +547,12 @@ git push
 ```
 
 ## iterm
+
+フォントをHackGen Nerdに変更する(nvimのアイコン表示に必要)
+
+```text
+Settings -> Profiles -> Text -> Font -> 「HackGen Console NF」を選ぶ
+```
 
 `cmd + enter`で最大化しないようにする
 
