@@ -153,6 +153,10 @@ sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
 
 # メニューバー・Dockへ反映
 killall Dock SystemUIServer ControlCenter
+
+$ メニューバー右側のアイコンを狭める(より多くのアイコンを表示するようにする)
+defaults -currentHost delete -globalDomain NSStatusItemSelectionPadding
+defaults -currentHost delete -globalDomain NSStatusItemSpacing
 ```
 
 ※言語・Caps Lock・Spotlightショートカットの変更は再ログイン(または再起動)で反映される
